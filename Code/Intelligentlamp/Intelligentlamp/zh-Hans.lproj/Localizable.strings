@@ -1,0 +1,115 @@
+/* 
+  Localizable.strings
+  Intelligentlamp
+
+  Created by L on 16/11/29.
+  Copyright © 2016年 L. All rights reserved.
+*/
+
+//App名称
+"CFBundleDisplayName" = "智能灯";
+
+//登录页面
+"login" = "登录";
+"NoAccount" = "还没有账号?";
+"AppDisplayName" = "智能照明";
+
+"MobileNum" = "请输入你的手机号码";
+"EnterPWD" = "请输入你的密码";
+"ForgotPWD" = "忘记密码?";
+"ThirdLogin" = "——————  社交账号登录  ——————";
+
+"PleaseEnterAccount" = "请输入账号";
+"PleaseEnterPW" = "请输入密码";
+"NoInternet" = "没有网络";
+"LoginSuccess" = "登录成功";
+"LoginFail" = "登录失败";
+//注册页面设置
+"Register" = "注册";
+"SetPassword" = "设置密码";
+"InputCode" = "输入验证码";
+"GetCode" = "获取验证码";
+"ExistAccount" = "存在账号";
+
+//重置密码
+"UnableToLogIn" = "重置密码";
+"ResetPWD" = "重置密码";
+"TheRegisterNum" = "请输入注册手机号码";
+"NewPassword" = "请输入新密码";
+//我的页面
+"Me" = "我的";
+"Share" = "分享应用";
+"Feedback" = "用户反馈";
+"About" = "关于我们";
+"LogOut" = "退出登录";
+"LogoutMsg" = "确定退出当前账号?";
+"SureLogout" = "确定";
+"CancleLogout" = "取消";
+
+//分享应用页面
+"WeChat" = "微信好友";
+"Friends" = "朋友圈";
+"QQ" = "qq";
+"Weibo" = "微博";
+"Cancle" = "取消";
+
+//用户反馈
+"Feedback" = "用户反馈";
+"Submit" = "提交";
+"FeedbackMsg" = "请输入留言";
+//关于我们
+"About" = "关于我们";
+"Company" = "上海球技";
+
+//我的灯泡页面
+"AllLamp" = "所有灯泡";
+
+//选择种类页面
+"ChooseSpecies" = "选择种类";
+
+//分组页面
+"Group" = "分组";
+"Add" =  "添加";
+
+//创建分组页面
+"AddGroup" = "创建分组";
+"Determine" = "确定";
+"GroupName" = "分组名称";
+"GroupDescribe" = "分组描述";
+
+//分组编辑
+"GroupName" = "分组名称";
+"GroupDescribe" = "分组描述";
+"DeleteGroup" = "删除分组";
+
+//场景页面
+"Scenario" = "场景";
+"Add" =  "添加";
+
+//创建场景页面
+"AddScenario" = "创建场景";
+"Determine" = "确定";
+"ScenarioName" = "场景名称";
+"ScenarioDescribe" = "场景描述";
+"TimeSwitch" = "定时开关";
+"TheSceneTiming" = "场景定时";
+"RandomTiming" = "随机定时";
+"OpenTime" = "开灯时间";
+"CloseTime" = "关灯时间";
+
+//场景编辑
+"ScenarioName" = "场景名称";
+"ScenarioDescribe" = "场景描述";
+"TheSceneTiming" = "场景定时";
+"DeleteScene" = "删除场景";
+"DeleteScenePrompt" = "确定删除该场景?";
+"YES" =  "YES";
+"NO" = "NO";
+
+//场景详情页
+"Edit" = "编辑";
+"AddLamp" = "添加灯泡";
+"Delete" = "删除";
+
+//没有数据
+"NOData" = "没有数据";

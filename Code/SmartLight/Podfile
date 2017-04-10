@@ -8,7 +8,7 @@ target 'SmartLight' do
     pod 'MBProgressHUD'
     pod 'SwiftyJSON'
     pod 'SnapKit'
-    pod 'R.swift'
+    #pod 'R.swift'
     pod 'YYKit'
     pod 'CocoaLumberjack/Swift'
     pod 'RealmSwift'

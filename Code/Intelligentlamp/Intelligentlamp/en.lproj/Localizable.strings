@@ -1,0 +1,113 @@
+/* 
+  Localizable.strings
+  Intelligentlamp
+
+  Created by L on 16/11/29.
+  Copyright © 2016年 L. All rights reserved.
+*/
+
+//App名称设置
+"CFBundleDisplayName" = "Intelligentlamp";
+
+//登录页面设置
+"login" = "Log in";
+"NoAccount" = "no account?";
+"AppDisplayName" = "Intelligentlamp";
+
+"MobileNum" = "Mobile number";
+"EnterPWD" = "Enter password";
+"ForgotPWD" = "Forget password?";
+"ThirdLogin" = "————  Social account login  ————";
+
+"PleaseEnterAccount" = "Please enter the account";
+"PleaseEnterPW" = "Please enter the password";
+"NoInternet" = "No Internet";
+"LoginSuccess" = "Login Success";
+"LoginFail" = "Login Fail";
+//注册页面设置
+"Register" = "Register";
+"SetPassword" = "Set Password";
+"InputCode" = "Input Code";
+"GetCode" = "Get Code";
+"ExistAccount" = "Exist Account";
+
+//重置密码
+"UnableToLogIn" = "Unable To Log In";
+"ResetPWD" = "Reset password";
+"TheRegisterNum" = "The Register phone number";
+"NewPassword" = "New Password";
+
+//我的页面
+"Me" = "Me";
+"Share" = "Sharing application";
+"Feedback" = "Feedback";
+"About" = "About";
+"LogOut" = "Log Out";
+"LogoutMsg" = "Determine the exit from the current account?";
+"SureLogout" = "Log Out";
+"CancleLogout" = "Cancle";
+
+//分享应用页面
+"WeChat" = "WeChat";
+"Friends" = "Friends";
+"QQ" = "QQ";
+"Weibo" = "Weibo";
+"CancleLogout" = "Cancle";
+
+//用户反馈
+"Feedback" = "Feedback";
+"Submit" = "Submit";
+"FeedbackMsg" = "Please enter a message";
+
+//关于我们
+"About" = "About";
+"Company" = "上海球技";
+
+//我的灯泡页面
+
+//分组页面
+"Group" = "Group";
+"Add" =  "Add";
+
+//创建分组页面
+"AddGroup" = "AddGroup";
+"Determine" = "Determine";
+"GroupName" = "GroupName";
+"GroupDescribe" = "GroupDescribe";
+
+//分组编辑
+"GroupName" = "GroupName";
+"GroupDescribe" = "GroupDescribe";
+"DeleteGroup" = "DeleteGroup";
+
+//场景页面
+"Scenario" = "Scene";
+"Add" =  "Add";
+
+//创建场景页面
+"AddScenario" = "AddScene";
+"Determine" = "Determine";
+"ScenarioName" = "SceneName";
+"ScenarioDescribe" = "SceneDescribe";
+"TimeSwitch" = "TimeSwitch";
+"TheSceneTiming" = "The Scene timing";
+"RandomTiming" = "Random timing";
+"OpenTime" = "OpenTime";
+"CloseTime" = "CloseTime";
+
+//场景编辑
+"ScenarioName" = "SceneName";
+"ScenarioDescribe" = "SceneDescribe";
+"TheSceneTiming" = "The Scene timing";
+"DeleteScene" = "DeleteScene";
+"DeleteScenePrompt" = "Sure to delete this scenario?";
+"YES" =  "YES";
+"NO" = "NO";
+
+//场景详情页
+"Edit" = "Edit";
+"AddLamp" = "AddLamp";
+"Delete" = "Delete";
+
+//没有数据
+"NOData" = "No Data";

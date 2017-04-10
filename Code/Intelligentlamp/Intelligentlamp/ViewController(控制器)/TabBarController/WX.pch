@@ -1,0 +1,29 @@
+//
+//  WX.pch
+//  weixin
+//
+//  Created by L on 16/8/17.
+//  Copyright © 2016年 L. All rights reserved.
+//
+
+#ifndef WX_pch
+#define WX_pch
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import <Masonry/Masonry.h>
+#import <AFNetworking/AFNetworking.h>
+#import "UtilsMacro.h"
+#import "NetMacros.h"
+#import "CommonUtility.h"
+#import "LXNetworking.h"
+#import "NetMacros.h"
+#import "SVProgressHUD.h"
+#import "UIImageView+WebCache.h"
+#import "MJRefresh.h"
+#import <BluetoothFoundation/BluetoothFoundation.h>
+#import "BabyBluetooth.h"
+
+#endif
+#endif /* WX_pch */
