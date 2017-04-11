@@ -43,6 +43,7 @@
 		D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */; };
 		D3FBC9341E9CBD8400929E81 /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3FBC9331E9CBD8400929E81 /* 启动页.jpg */; };
 		D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC9351E9CC18800929E81 /* MainViewController.swift */; };
+		D3FBC9381E9CE1FB00929E81 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC9371E9CE1FB00929E81 /* MoreViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3FBC9331E9CBD8400929E81 /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
 		D3FBC9351E9CC18800929E81 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D3FBC9371E9CE1FB00929E81 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -316,6 +318,7 @@
 			children = (
 				D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */,
 				D3FBC9351E9CC18800929E81 /* MainViewController.swift */,
+				D3FBC9371E9CE1FB00929E81 /* MoreViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */,
 				D36C3B9C1E9C86B700708706 /* NetworkUtil.swift in Sources */,
 				D36C3B9D1E9C86B700708706 /* OCSupportUtil.m in Sources */,
+				D3FBC9381E9CE1FB00929E81 /* MoreViewController.swift in Sources */,
 				D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */,
 				D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */,
 				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,

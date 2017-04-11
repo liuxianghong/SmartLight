@@ -26,4 +26,7 @@ class SizeUtil: NSObject {
         return 25
     }
     
+    static var sidebarWidth: CGFloat {
+        return DeviceSize.deviceWidth() / 3
+    }
 }

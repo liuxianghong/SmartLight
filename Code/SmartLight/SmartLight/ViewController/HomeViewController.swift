@@ -11,11 +11,17 @@ import UIKit
 class HomeViewController: UIViewController {
 
     @IBOutlet var switchButton: UIButton!
+    @IBOutlet var moreView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        moreView.snp.makeConstraints { (ConstraintMaker) in
+            ConstraintMaker.top.bottom.equalToSuperview()
+            ConstraintMaker.width.equalTo(SizeUtil.sidebarWidth)
+            ConstraintMaker.left.equalTo(-SizeUtil.sidebarWidth)
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +31,12 @@ class HomeViewController: UIViewController {
     
     @IBAction func moreClick(sender: UIButton) {
         
+        UIView.animate(withDuration: 0.5) {
+            self.moreView.snp.updateConstraints { (ConstraintMaker) in
+                ConstraintMaker.left.equalTo(0)
+            }
+            self.view.layoutIfNeeded()
+        }
     }
     
     @IBAction func bleClick(sender: UIButton) {
