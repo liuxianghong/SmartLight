@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		B855684B026163E044992798 /* Pods_SmartLight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 909CA87465BF568BD2F12BC0 /* Pods_SmartLight.framework */; };
 		D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1AB1E9B330700443530 /* AppDelegate.swift */; };
-		D305B1AE1E9B330700443530 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1AD1E9B330700443530 /* ViewController.swift */; };
 		D305B1B11E9B330700443530 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D305B1AF1E9B330700443530 /* Main.storyboard */; };
 		D305B1B31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1B21E9B330700443530 /* Assets.xcassets */; };
 		D305B1B61E9B330700443530 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D305B1B41E9B330700443530 /* LaunchScreen.storyboard */; };
@@ -21,6 +20,29 @@
 		D305B1D11E9B330700443530 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1D01E9B330700443530 /* ExtensionDelegate.swift */; };
 		D305B1D31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1D21E9B330700443530 /* Assets.xcassets */; };
 		D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1EA1E9B888A00443530 /* R.generated.swift */; };
+		D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B5F1E9C86B700708706 /* DeviceSize.swift */; };
+		D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */; };
+		D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B631E9C86B700708706 /* UIDevice+Extension.swift */; };
+		D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B641E9C86B700708706 /* UIImage+Color.swift */; };
+		D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B651E9C86B700708706 /* UIView+Border.swift */; };
+		D36C3B891E9C86B700708706 /* CircularProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B671E9C86B700708706 /* CircularProgressView.swift */; };
+		D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B6B1E9C86B700708706 /* MessageBoxView.swift */; };
+		D36C3B8E1E9C86B700708706 /* PenetrateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B6C1E9C86B700708706 /* PenetrateView.swift */; };
+		D36C3B8F1E9C86B700708706 /* RadialGradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B6D1E9C86B700708706 /* RadialGradientView.swift */; };
+		D36C3B901E9C86B700708706 /* RoundLable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B6E1E9C86B700708706 /* RoundLable.swift */; };
+		D36C3B911E9C86B700708706 /* ScrollLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B6F1E9C86B700708706 /* ScrollLabel.swift */; };
+		D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B701E9C86B700708706 /* SwitchButton.swift */; };
+		D36C3B931E9C86B700708706 /* ToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B711E9C86B700708706 /* ToastView.swift */; };
+		D36C3B951E9C86B700708706 /* DeviceTypeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B741E9C86B700708706 /* DeviceTypeUtil.swift */; };
+		D36C3B961E9C86B700708706 /* DiskStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B751E9C86B700708706 /* DiskStatus.swift */; };
+		D36C3B9C1E9C86B700708706 /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B7D1E9C86B700708706 /* NetworkUtil.swift */; };
+		D36C3B9D1E9C86B700708706 /* OCSupportUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B7F1E9C86B700708706 /* OCSupportUtil.m */; };
+		D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */; };
+		D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B821E9C86B700708706 /* TimeUtil.swift */; };
+		D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3BA11E9C8BD600708706 /* SizeUtil.swift */; };
+		D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */; };
+		D3FBC9341E9CBD8400929E81 /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3FBC9331E9CBD8400929E81 /* 启动页.jpg */; };
+		D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC9351E9CC18800929E81 /* MainViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +92,6 @@
 		909CA87465BF568BD2F12BC0 /* Pods_SmartLight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartLight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D305B1A81E9B330700443530 /* SmartLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D305B1AB1E9B330700443530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		D305B1AD1E9B330700443530 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D305B1B01E9B330700443530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D305B1B21E9B330700443530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D305B1B51E9B330700443530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -86,6 +107,30 @@
 		D305B1D41E9B330700443530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D305B1EA1E9B888A00443530 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D35FEAC1EB018387AFCBD200 /* Pods-SmartLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLight/Pods-SmartLight.debug.xcconfig"; sourceTree = "<group>"; };
+		D36C3B5F1E9C86B700708706 /* DeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
+		D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollectionType+RemoveObject.swift"; sourceTree = "<group>"; };
+		D36C3B631E9C86B700708706 /* UIDevice+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extension.swift"; sourceTree = "<group>"; };
+		D36C3B641E9C86B700708706 /* UIImage+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Color.swift"; sourceTree = "<group>"; };
+		D36C3B651E9C86B700708706 /* UIView+Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Border.swift"; sourceTree = "<group>"; };
+		D36C3B671E9C86B700708706 /* CircularProgressView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CircularProgressView.swift; sourceTree = "<group>"; };
+		D36C3B6B1E9C86B700708706 /* MessageBoxView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageBoxView.swift; sourceTree = "<group>"; };
+		D36C3B6C1E9C86B700708706 /* PenetrateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PenetrateView.swift; sourceTree = "<group>"; };
+		D36C3B6D1E9C86B700708706 /* RadialGradientView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RadialGradientView.swift; sourceTree = "<group>"; };
+		D36C3B6E1E9C86B700708706 /* RoundLable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundLable.swift; sourceTree = "<group>"; };
+		D36C3B6F1E9C86B700708706 /* ScrollLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollLabel.swift; sourceTree = "<group>"; };
+		D36C3B701E9C86B700708706 /* SwitchButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchButton.swift; sourceTree = "<group>"; };
+		D36C3B711E9C86B700708706 /* ToastView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToastView.swift; sourceTree = "<group>"; };
+		D36C3B741E9C86B700708706 /* DeviceTypeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceTypeUtil.swift; sourceTree = "<group>"; };
+		D36C3B751E9C86B700708706 /* DiskStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiskStatus.swift; sourceTree = "<group>"; };
+		D36C3B7D1E9C86B700708706 /* NetworkUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		D36C3B7E1E9C86B700708706 /* OCSupportUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OCSupportUtil.h; sourceTree = "<group>"; };
+		D36C3B7F1E9C86B700708706 /* OCSupportUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OCSupportUtil.m; sourceTree = "<group>"; };
+		D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSupportUtil.swift; sourceTree = "<group>"; };
+		D36C3B821E9C86B700708706 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
+		D36C3BA11E9C8BD600708706 /* SizeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeUtil.swift; sourceTree = "<group>"; };
+		D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		D3FBC9331E9CBD8400929E81 /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
+		D3FBC9351E9CC18800929E81 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,10 +201,18 @@
 		D305B1AA1E9B330700443530 /* SmartLight */ = {
 			isa = PBXGroup;
 			children = (
-				D305B1EA1E9B888A00443530 /* R.generated.swift */,
-				D305B1AB1E9B330700443530 /* AppDelegate.swift */,
-				D305B1AD1E9B330700443530 /* ViewController.swift */,
 				D305B1AF1E9B330700443530 /* Main.storyboard */,
+				D3FBC9321E9CBD8400929E81 /* Resources */,
+				D36C3B5E1E9C86B700708706 /* AppDefine */,
+				D36C3B601E9C86B700708706 /* AppExtra */,
+				D36C3B661E9C86B700708706 /* AppUIKIt */,
+				D36C3B721E9C86B700708706 /* AppUtilities */,
+				D36C3BA31E9C8D4C00708706 /* Api */,
+				D36C3BA41E9C8D4C00708706 /* Model */,
+				D36C3BA51E9C8D4C00708706 /* View */,
+				D36C3BA61E9C8D4C00708706 /* ViewController */,
+				D305B1AB1E9B330700443530 /* AppDelegate.swift */,
+				D305B1EA1E9B888A00443530 /* R.generated.swift */,
 				D305B1B21E9B330700443530 /* Assets.xcassets */,
 				D305B1B41E9B330700443530 /* LaunchScreen.storyboard */,
 				D305B1B71E9B330700443530 /* Info.plist */,
@@ -186,6 +239,93 @@
 				D305B1D41E9B330700443530 /* Info.plist */,
 			);
 			path = "SmartLight WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D36C3B5E1E9C86B700708706 /* AppDefine */ = {
+			isa = PBXGroup;
+			children = (
+				D36C3B5F1E9C86B700708706 /* DeviceSize.swift */,
+			);
+			path = AppDefine;
+			sourceTree = "<group>";
+		};
+		D36C3B601E9C86B700708706 /* AppExtra */ = {
+			isa = PBXGroup;
+			children = (
+				D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */,
+				D36C3B631E9C86B700708706 /* UIDevice+Extension.swift */,
+				D36C3B641E9C86B700708706 /* UIImage+Color.swift */,
+				D36C3B651E9C86B700708706 /* UIView+Border.swift */,
+			);
+			path = AppExtra;
+			sourceTree = "<group>";
+		};
+		D36C3B661E9C86B700708706 /* AppUIKIt */ = {
+			isa = PBXGroup;
+			children = (
+				D36C3B671E9C86B700708706 /* CircularProgressView.swift */,
+				D36C3B6B1E9C86B700708706 /* MessageBoxView.swift */,
+				D36C3B6C1E9C86B700708706 /* PenetrateView.swift */,
+				D36C3B6D1E9C86B700708706 /* RadialGradientView.swift */,
+				D36C3B6E1E9C86B700708706 /* RoundLable.swift */,
+				D36C3B6F1E9C86B700708706 /* ScrollLabel.swift */,
+				D36C3B701E9C86B700708706 /* SwitchButton.swift */,
+				D36C3B711E9C86B700708706 /* ToastView.swift */,
+			);
+			path = AppUIKIt;
+			sourceTree = "<group>";
+		};
+		D36C3B721E9C86B700708706 /* AppUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				D36C3B741E9C86B700708706 /* DeviceTypeUtil.swift */,
+				D36C3B751E9C86B700708706 /* DiskStatus.swift */,
+				D36C3B7D1E9C86B700708706 /* NetworkUtil.swift */,
+				D36C3B7E1E9C86B700708706 /* OCSupportUtil.h */,
+				D36C3B7F1E9C86B700708706 /* OCSupportUtil.m */,
+				D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */,
+				D36C3B821E9C86B700708706 /* TimeUtil.swift */,
+				D36C3BA11E9C8BD600708706 /* SizeUtil.swift */,
+			);
+			path = AppUtilities;
+			sourceTree = "<group>";
+		};
+		D36C3BA31E9C8D4C00708706 /* Api */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Api;
+			sourceTree = "<group>";
+		};
+		D36C3BA41E9C8D4C00708706 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		D36C3BA51E9C8D4C00708706 /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		D36C3BA61E9C8D4C00708706 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */,
+				D3FBC9351E9CC18800929E81 /* MainViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		D3FBC9321E9CBD8400929E81 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D3FBC9331E9CBD8400929E81 /* 启动页.jpg */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -303,6 +443,7 @@
 			files = (
 				D305B1B61E9B330700443530 /* LaunchScreen.storyboard in Resources */,
 				D305B1B31E9B330700443530 /* Assets.xcassets in Resources */,
+				D3FBC9341E9CBD8400929E81 /* 启动页.jpg in Resources */,
 				D305B1B11E9B330700443530 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -392,9 +533,30 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D305B1AE1E9B330700443530 /* ViewController.swift in Sources */,
+				D36C3B901E9C86B700708706 /* RoundLable.swift in Sources */,
+				D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */,
+				D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */,
+				D36C3B9C1E9C86B700708706 /* NetworkUtil.swift in Sources */,
+				D36C3B9D1E9C86B700708706 /* OCSupportUtil.m in Sources */,
+				D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */,
+				D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */,
+				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,
+				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
+				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
+				D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */,
+				D36C3B951E9C86B700708706 /* DeviceTypeUtil.swift in Sources */,
 				D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */,
+				D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */,
+				D36C3B8F1E9C86B700708706 /* RadialGradientView.swift in Sources */,
+				D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */,
+				D36C3B911E9C86B700708706 /* ScrollLabel.swift in Sources */,
 				D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */,
+				D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */,
+				D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */,
+				D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */,
+				D36C3B8E1E9C86B700708706 /* PenetrateView.swift in Sources */,
+				D36C3B891E9C86B700708706 /* CircularProgressView.swift in Sources */,
+				D36C3B961E9C86B700708706 /* DiskStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

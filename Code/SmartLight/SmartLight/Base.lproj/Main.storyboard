@@ -1,26 +1,167 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Wvd-xy-2Hi">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Main View Controller-->
+        <scene sceneID="z37-v4-Zcm">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="Wvd-xy-2Hi" customClass="MainViewController" customModule="SmartLight" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="21d-lm-8XD">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="tz5-Bq-LTi" kind="relationship" relationship="rootViewController" id="bhG-Lr-qH6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5GZ-yY-vq8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1002" y="659"/>
+        </scene>
+        <!--Home View Controller-->
+        <scene sceneID="rzA-E9-Mgk">
+            <objects>
+                <viewController id="tz5-Bq-LTi" customClass="HomeViewController" customModule="SmartLight" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                        <viewControllerLayoutGuide type="top" id="s9w-tI-pa3"/>
+                        <viewControllerLayoutGuide type="bottom" id="cGc-VM-H3v"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" id="Rl1-0y-D4H">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfl-vs-uBq">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4z9-ar-PL7">
+                                        <rect key="frame" x="15" y="13" width="29" height="20"/>
+                                        <state key="normal" backgroundImage="btn-more"/>
+                                        <connections>
+                                            <action selector="moreClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="6Fo-gm-sQH"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rc9-OO-SV7">
+                                        <rect key="frame" x="320" y="13" width="40" height="20"/>
+                                        <state key="normal" backgroundImage="switch-off"/>
+                                        <state key="selected" backgroundImage="switch-no"/>
+                                        <connections>
+                                            <action selector="switchClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="jLd-A3-e00"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-W9-ux7">
+                                        <rect key="frame" x="285" y="11" width="24" height="24"/>
+                                        <state key="normal" backgroundImage="ble"/>
+                                        <connections>
+                                            <action selector="bleClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="UK3-pZ-fMc"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="Rc9-OO-SV7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="0bb-R5-FgM"/>
+                                    <constraint firstItem="Rc9-OO-SV7" firstAttribute="leading" secondItem="sXp-W9-ux7" secondAttribute="trailing" constant="11" id="5Ij-uX-C4a"/>
+                                    <constraint firstAttribute="height" constant="45" id="DHy-y5-2ik"/>
+                                    <constraint firstItem="4z9-ar-PL7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="HzW-je-jWg"/>
+                                    <constraint firstAttribute="trailing" secondItem="Rc9-OO-SV7" secondAttribute="trailing" constant="15" id="Jcv-jd-8sG"/>
+                                    <constraint firstItem="4z9-ar-PL7" firstAttribute="leading" secondItem="Vfl-vs-uBq" secondAttribute="leading" constant="15" id="Y4R-wr-QNe"/>
+                                    <constraint firstItem="sXp-W9-ux7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="iUX-2n-PCP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="4"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.80000000000000004"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" cocoaTouchSystemColor="darkTextColor"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rKg-XG-mIe">
+                                <rect key="frame" x="0.0" y="622" width="375" height="45"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FxF-ah-rHq">
+                                        <rect key="frame" x="15" y="1.5" width="41" height="41"/>
+                                        <state key="normal" backgroundImage="btn-write-n"/>
+                                        <connections>
+                                            <action selector="editeClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="3Bm-UZ-Mmq"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3Lc-OD-5yT">
+                                        <rect key="frame" x="319" y="2.5" width="41" height="41"/>
+                                        <state key="normal" backgroundImage="delete-light"/>
+                                        <connections>
+                                            <action selector="deleteClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="Lhu-8J-ufp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l70-HP-afZ">
+                                        <rect key="frame" x="166.5" y="1.5" width="41" height="41"/>
+                                        <state key="normal" backgroundImage="add-light"/>
+                                        <connections>
+                                            <action selector="addClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="GAS-bU-5OI"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="3Lc-OD-5yT" firstAttribute="centerY" secondItem="rKg-XG-mIe" secondAttribute="centerY" id="BV1-TA-8fc"/>
+                                    <constraint firstItem="FxF-ah-rHq" firstAttribute="leading" secondItem="rKg-XG-mIe" secondAttribute="leading" constant="15" id="Eaj-7g-Bkl"/>
+                                    <constraint firstItem="l70-HP-afZ" firstAttribute="centerY" secondItem="rKg-XG-mIe" secondAttribute="centerY" id="GhS-me-olm"/>
+                                    <constraint firstItem="l70-HP-afZ" firstAttribute="centerX" secondItem="rKg-XG-mIe" secondAttribute="centerX" id="S3G-LE-H6l"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Lc-OD-5yT" secondAttribute="trailing" constant="15" id="VrP-JB-Qu3"/>
+                                    <constraint firstItem="FxF-ah-rHq" firstAttribute="centerY" secondItem="rKg-XG-mIe" secondAttribute="centerY" id="nXG-mq-PMz"/>
+                                    <constraint firstAttribute="height" constant="45" id="tiU-3S-kaX"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                        <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                        <real key="value" value="0.69999999999999996"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94509803921568625" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="Vfl-vs-uBq" firstAttribute="leading" secondItem="Rl1-0y-D4H" secondAttribute="leading" id="8cy-9I-2bo"/>
+                            <constraint firstItem="cGc-VM-H3v" firstAttribute="top" secondItem="rKg-XG-mIe" secondAttribute="bottom" id="Gud-Zx-gtI"/>
+                            <constraint firstItem="rKg-XG-mIe" firstAttribute="leading" secondItem="Rl1-0y-D4H" secondAttribute="leading" id="IUg-hN-Xab"/>
+                            <constraint firstItem="Vfl-vs-uBq" firstAttribute="top" secondItem="Rl1-0y-D4H" secondAttribute="top" id="NUi-fT-aXe"/>
+                            <constraint firstAttribute="trailing" secondItem="rKg-XG-mIe" secondAttribute="trailing" id="lYQ-1X-gwg"/>
+                            <constraint firstAttribute="trailing" secondItem="Vfl-vs-uBq" secondAttribute="trailing" id="sCg-fg-J6T"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Ewo-tF-t5R"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="switchButton" destination="Rc9-OO-SV7" id="6Tw-1I-2bd"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="opz-eF-RaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="-87.200000000000003" y="662.51874062968523"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="add-light" width="41" height="41"/>
+        <image name="ble" width="24" height="24"/>
+        <image name="btn-more" width="29" height="20"/>
+        <image name="btn-write-n" width="41" height="41"/>
+        <image name="delete-light" width="41" height="41"/>
+        <image name="switch-no" width="40" height="20"/>
+        <image name="switch-off" width="40" height="20"/>
+    </resources>
 </document>
