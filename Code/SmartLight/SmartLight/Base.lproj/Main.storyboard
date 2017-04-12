@@ -38,6 +38,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="klA-Fl-gMj">
+                                <rect key="frame" x="0.0" y="45" width="375" height="577"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vfl-vs-uBq">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="45"/>
                                 <subviews>
@@ -57,22 +61,27 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXp-W9-ux7">
-                                        <rect key="frame" x="285" y="11" width="24" height="24"/>
+                                        <rect key="frame" x="283" y="11" width="24" height="24"/>
                                         <state key="normal" backgroundImage="ble"/>
                                         <connections>
                                             <action selector="bleClickWithSender:" destination="tz5-Bq-LTi" eventType="touchUpInside" id="UK3-pZ-fMc"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="mKS-eg-K5c">
+                                        <rect key="frame" x="167" y="6.5" width="40" height="33"/>
+                                    </imageView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="Rc9-OO-SV7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="0bb-R5-FgM"/>
-                                    <constraint firstItem="Rc9-OO-SV7" firstAttribute="leading" secondItem="sXp-W9-ux7" secondAttribute="trailing" constant="11" id="5Ij-uX-C4a"/>
+                                    <constraint firstItem="Rc9-OO-SV7" firstAttribute="leading" secondItem="sXp-W9-ux7" secondAttribute="trailing" constant="13" id="5Ij-uX-C4a"/>
                                     <constraint firstAttribute="height" constant="45" id="DHy-y5-2ik"/>
+                                    <constraint firstItem="mKS-eg-K5c" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="Ev0-B0-dly"/>
                                     <constraint firstItem="4z9-ar-PL7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="HzW-je-jWg"/>
                                     <constraint firstAttribute="trailing" secondItem="Rc9-OO-SV7" secondAttribute="trailing" constant="15" id="Jcv-jd-8sG"/>
                                     <constraint firstItem="4z9-ar-PL7" firstAttribute="leading" secondItem="Vfl-vs-uBq" secondAttribute="leading" constant="15" id="Y4R-wr-QNe"/>
                                     <constraint firstItem="sXp-W9-ux7" firstAttribute="centerY" secondItem="Vfl-vs-uBq" secondAttribute="centerY" id="iUX-2n-PCP"/>
+                                    <constraint firstItem="mKS-eg-K5c" firstAttribute="centerX" secondItem="Vfl-vs-uBq" secondAttribute="centerX" id="qE4-lq-tOq"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
@@ -134,7 +143,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nJF-gs-5mm">
-                                <rect key="frame" x="0.0" y="175" width="183" height="355"/>
+                                <rect key="frame" x="0.0" y="175" width="42" height="355"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="OmW-iw-sR4" kind="embed" id="uo4-H7-oNA"/>
@@ -144,9 +153,13 @@
                         <color key="backgroundColor" red="0.94509803921568625" green="0.97647058823529409" blue="0.99215686274509807" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Vfl-vs-uBq" firstAttribute="leading" secondItem="Rl1-0y-D4H" secondAttribute="leading" id="8cy-9I-2bo"/>
+                            <constraint firstItem="klA-Fl-gMj" firstAttribute="top" secondItem="Vfl-vs-uBq" secondAttribute="bottom" id="D54-gN-MOZ"/>
+                            <constraint firstAttribute="trailing" secondItem="klA-Fl-gMj" secondAttribute="trailing" id="Dr8-fb-K1w"/>
                             <constraint firstItem="cGc-VM-H3v" firstAttribute="top" secondItem="rKg-XG-mIe" secondAttribute="bottom" id="Gud-Zx-gtI"/>
                             <constraint firstItem="rKg-XG-mIe" firstAttribute="leading" secondItem="Rl1-0y-D4H" secondAttribute="leading" id="IUg-hN-Xab"/>
+                            <constraint firstItem="rKg-XG-mIe" firstAttribute="top" secondItem="klA-Fl-gMj" secondAttribute="bottom" id="Mwm-kD-Ret"/>
                             <constraint firstItem="Vfl-vs-uBq" firstAttribute="top" secondItem="Rl1-0y-D4H" secondAttribute="top" id="NUi-fT-aXe"/>
+                            <constraint firstItem="klA-Fl-gMj" firstAttribute="leading" secondItem="Rl1-0y-D4H" secondAttribute="leading" id="eT5-5b-zj9"/>
                             <constraint firstAttribute="trailing" secondItem="rKg-XG-mIe" secondAttribute="trailing" id="lYQ-1X-gwg"/>
                             <constraint firstAttribute="trailing" secondItem="Vfl-vs-uBq" secondAttribute="trailing" id="sCg-fg-J6T"/>
                         </constraints>
@@ -166,8 +179,12 @@
         <scene sceneID="kaU-18-a6d">
             <objects>
                 <viewController id="OmW-iw-sR4" customClass="MoreViewController" customModule="SmartLight" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="L0i-4h-Kql"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fs1-4f-P6x"/>
+                    </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="zuw-uF-KQw">
-                        <rect key="frame" x="0.0" y="0.0" width="183" height="355"/>
+                        <rect key="frame" x="0.0" y="0.0" width="42" height="355"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93R-gQ-TbF">
@@ -196,6 +213,7 @@
         <image name="btn-write-n" width="41" height="41"/>
         <image name="close" width="21" height="21"/>
         <image name="delete-light" width="41" height="41"/>
+        <image name="logo" width="40" height="33"/>
         <image name="switch-no" width="40" height="20"/>
         <image name="switch-off" width="40" height="20"/>
     </resources>
