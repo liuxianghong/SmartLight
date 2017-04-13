@@ -41,6 +41,7 @@
 		D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */; };
 		D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B821E9C86B700708706 /* TimeUtil.swift */; };
 		D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3BA11E9C8BD600708706 /* SizeUtil.swift */; };
+		D3D6A13B1E9FBC9800242EB9 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */; };
 		D3D988A11E9F5B5900186793 /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */; };
 		D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */; };
 		D3FBC9341E9CBD8400929E81 /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3FBC9331E9CBD8400929E81 /* 启动页.jpg */; };
@@ -132,6 +133,7 @@
 		D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSupportUtil.swift; sourceTree = "<group>"; };
 		D36C3B821E9C86B700708706 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		D36C3BA11E9C8BD600708706 /* SizeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeUtil.swift; sourceTree = "<group>"; };
+		D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTableViewCell.swift; sourceTree = "<group>"; };
 		D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3FBC9331E9CBD8400929E81 /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 		D36C3BA31E9C8D4C00708706 /* Api */ = {
 			isa = PBXGroup;
 			children = (
+				D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -410,17 +413,17 @@
 				TargetAttributes = {
 					D305B1A71E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 					D305B1B91E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 					D305B1C81E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -551,6 +554,7 @@
 				D3FBC9381E9CE1FB00929E81 /* MoreViewController.swift in Sources */,
 				D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */,
 				D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */,
+				D3D6A13B1E9FBC9800242EB9 /* BLEManager.swift in Sources */,
 				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,
 				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
 				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
@@ -721,7 +725,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -738,7 +742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -756,7 +760,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;
@@ -774,7 +778,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;
@@ -792,12 +796,14 @@
 			baseConfigurationReference = D35FEAC1EB018387AFCBD200 /* Pods-SmartLight.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = SmartLight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -807,12 +813,14 @@
 			baseConfigurationReference = 884CABA76125E410210AA8E1 /* Pods-SmartLight.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = SmartLight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
