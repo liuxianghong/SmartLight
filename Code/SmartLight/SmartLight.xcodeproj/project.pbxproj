@@ -20,6 +20,7 @@
 		D305B1D11E9B330700443530 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1D01E9B330700443530 /* ExtensionDelegate.swift */; };
 		D305B1D31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1D21E9B330700443530 /* Assets.xcassets */; };
 		D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1EA1E9B888A00443530 /* R.generated.swift */; };
+		D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34046681E9F733C003EB0AA /* SideTableViewCell.swift */; };
 		D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B5F1E9C86B700708706 /* DeviceSize.swift */; };
 		D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */; };
 		D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B631E9C86B700708706 /* UIDevice+Extension.swift */; };
@@ -40,6 +41,7 @@
 		D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */; };
 		D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B821E9C86B700708706 /* TimeUtil.swift */; };
 		D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3BA11E9C8BD600708706 /* SizeUtil.swift */; };
+		D3D988A11E9F5B5900186793 /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */; };
 		D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */; };
 		D3FBC9341E9CBD8400929E81 /* 启动页.jpg in Resources */ = {isa = PBXBuildFile; fileRef = D3FBC9331E9CBD8400929E81 /* 启动页.jpg */; };
 		D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3FBC9351E9CC18800929E81 /* MainViewController.swift */; };
@@ -107,6 +109,7 @@
 		D305B1D21E9B330700443530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D305B1D41E9B330700443530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D305B1EA1E9B888A00443530 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D34046681E9F733C003EB0AA /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
 		D35FEAC1EB018387AFCBD200 /* Pods-SmartLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLight/Pods-SmartLight.debug.xcconfig"; sourceTree = "<group>"; };
 		D36C3B5F1E9C86B700708706 /* DeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
 		D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RangeReplaceableCollectionType+RemoveObject.swift"; sourceTree = "<group>"; };
@@ -129,6 +132,7 @@
 		D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSupportUtil.swift; sourceTree = "<group>"; };
 		D36C3B821E9C86B700708706 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		D36C3BA11E9C8BD600708706 /* SizeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeUtil.swift; sourceTree = "<group>"; };
+		D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTableViewCell.swift; sourceTree = "<group>"; };
 		D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		D3FBC9331E9CBD8400929E81 /* 启动页.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "启动页.jpg"; sourceTree = "<group>"; };
 		D3FBC9351E9CC18800929E81 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -309,6 +313,8 @@
 		D36C3BA51E9C8D4C00708706 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */,
+				D34046681E9F733C003EB0AA /* SideTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -316,8 +322,8 @@
 		D36C3BA61E9C8D4C00708706 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */,
 				D3FBC9351E9CC18800929E81 /* MainViewController.swift */,
+				D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */,
 				D3FBC9371E9CE1FB00929E81 /* MoreViewController.swift */,
 			);
 			path = ViewController;
@@ -540,6 +546,7 @@
 				D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */,
 				D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */,
 				D36C3B9C1E9C86B700708706 /* NetworkUtil.swift in Sources */,
+				D3D988A11E9F5B5900186793 /* LightTableViewCell.swift in Sources */,
 				D36C3B9D1E9C86B700708706 /* OCSupportUtil.m in Sources */,
 				D3FBC9381E9CE1FB00929E81 /* MoreViewController.swift in Sources */,
 				D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */,
@@ -556,6 +563,7 @@
 				D36C3B911E9C86B700708706 /* ScrollLabel.swift in Sources */,
 				D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */,
 				D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */,
+				D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */,
 				D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */,
 				D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */,
 				D36C3B8E1E9C86B700708706 /* PenetrateView.swift in Sources */,

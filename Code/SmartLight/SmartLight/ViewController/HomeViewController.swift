@@ -8,10 +8,11 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet var switchButton: UIButton!
     @IBOutlet var moreView: UIView!
+    @IBOutlet var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +23,8 @@ class HomeViewController: UIViewController {
             ConstraintMaker.width.equalTo(SizeUtil.sidebarWidth)
             ConstraintMaker.left.equalTo(-SizeUtil.sidebarWidth)
         }
+        
+        tableView.tableFooterView = UIView()
     }
 
     override func didReceiveMemoryWarning() {
@@ -29,14 +32,18 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func moreClick(sender: UIButton) {
-        
+    func showSide(show: Bool) {
+        let width = show ? CGFloat(0) : SizeUtil.sidebarWidth
         UIView.animate(withDuration: 0.5) {
             self.moreView.snp.updateConstraints { (ConstraintMaker) in
-                ConstraintMaker.left.equalTo(0)
+                ConstraintMaker.left.equalTo(width)
             }
             self.view.layoutIfNeeded()
         }
+    }
+    
+    @IBAction func moreClick(sender: UIButton) {
+        showSide(show: true)
     }
     
     @IBAction func bleClick(sender: UIButton) {
@@ -58,10 +65,62 @@ class HomeViewController: UIViewController {
     @IBAction func deleteClick(sender: UIButton) {
         
     }
-//    override var prefersStatusBarHidden : Bool {
-//        return true
-//    }
     
+    // MARK: - Table view data source
+    
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // #warning Incomplete implementation, return the number of sections
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // #warning Incomplete implementation, return the number of rows
+        return 1
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.reuseIdentifier, for: indexPath)
+        
+        // Configure the cell...
+        
+        return cell
+    }
+    
+    /*
+     // Override to support conditional editing of the table view.
+     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the specified item to be editable.
+     return true
+     }
+     */
+    
+    /*
+     // Override to support editing the table view.
+     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+     if editingStyle == .delete {
+     // Delete the row from the data source
+     tableView.deleteRows(at: [indexPath], with: .fade)
+     } else if editingStyle == .insert {
+     // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+     }
+     }
+     */
+    
+    /*
+     // Override to support rearranging the table view.
+     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+     
+     }
+     */
+    
+    /*
+     // Override to support conditional rearranging of the table view.
+     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+     // Return false if you do not want the item to be re-orderable.
+     return true
+     }
+     */
 
     /*
     // MARK: - Navigation
