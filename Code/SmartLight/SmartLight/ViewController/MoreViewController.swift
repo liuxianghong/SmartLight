@@ -11,9 +11,16 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+struct MoreModel {
+    var title: String
+    var identifier: String
+}
+
+class MoreViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
+    let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, MoreModel>>()
+    let bag: DisposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +28,23 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView()
         
-        tableView.rx.items(dataSource: RxTableViewDataSourceType & UITableViewDataSource)
+        dataSource.configureCell = {
+            section, tableView, indexPath, _ in
+            let cell = tableView.dequeueReusableCell(withIdentifier: SideTableViewCell.reuseIdentifier, for: indexPath) as! SideTableViewCell
+            cell.tag = indexPath.row
+            
+            let model = section.sectionModels[indexPath.section].items[indexPath.row]
+            cell.textLabel?.text = model.title
+            
+            return cell
+        }
+        
+        getUsers().bind(to: tableView.rx.items(dataSource: dataSource)).addDisposableTo(bag)
+        
+        tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
+            self.tableView.deselectRow(at: indexPath, animated: true)
+        }).addDisposableTo(bag)
+//        tableView.rx_setDelegate(self).addDisposableTo(bag)
     }
 
     override func didReceiveMemoryWarning() {
@@ -38,31 +61,22 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
         }
     }
     
-    // MARK: - Table view data source
     
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 1
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 2
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: SideTableViewCell.reuseIdentifier, for: indexPath)
-        
-        // Configure the cell...
-        
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print(self.parent)
-        
+    func getUsers() -> Observable<[SectionModel<String, MoreModel>]> {
+        return Observable.create { (observer) -> Disposable in
+            
+            
+            let models = [MoreModel(title: "setting", identifier: "")
+                ,MoreModel(title: "about", identifier: "")]
+            
+            let section = [SectionModel(model: "", items: models)]
+            
+            observer.onNext(section)
+            observer.onCompleted()
+            return Disposables.create {
+                
+            }
+        }
     }
 
     /*

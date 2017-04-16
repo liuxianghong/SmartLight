@@ -46,7 +46,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         if enabled == 0 {
             manager.stopScan()
         } else {
-            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            //manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
         }
     }
     
@@ -62,7 +62,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            //manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
             break
         default:
             break
