@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import RxSwift
+import RxCocoa
+import RxDataSources
 
 class MoreViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
@@ -17,6 +20,8 @@ class MoreViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView()
+        
+        tableView.rx.items(dataSource: RxTableViewDataSourceType & UITableViewDataSource)
     }
 
     override func didReceiveMemoryWarning() {

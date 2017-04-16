@@ -20,6 +20,7 @@
 		D305B1D11E9B330700443530 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1D01E9B330700443530 /* ExtensionDelegate.swift */; };
 		D305B1D31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1D21E9B330700443530 /* Assets.xcassets */; };
 		D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1EA1E9B888A00443530 /* R.generated.swift */; };
+		D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F09C1EA1065900892CFF /* CSRmesh.framework */; };
 		D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34046681E9F733C003EB0AA /* SideTableViewCell.swift */; };
 		D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B5F1E9C86B700708706 /* DeviceSize.swift */; };
 		D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B611E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift */; };
@@ -110,6 +111,8 @@
 		D305B1D21E9B330700443530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D305B1D41E9B330700443530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D305B1EA1E9B888A00443530 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D320F09C1EA1065900892CFF /* CSRmesh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSRmesh.framework; path = SmartLight/Frameworks/CSRmesh.framework; sourceTree = "<group>"; };
+		D320F0A11EA1070400892CFF /* SmartLight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLight-Bridging-Header.h"; sourceTree = "<group>"; };
 		D34046681E9F733C003EB0AA /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
 		D35FEAC1EB018387AFCBD200 /* Pods-SmartLight.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartLight.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SmartLight/Pods-SmartLight.debug.xcconfig"; sourceTree = "<group>"; };
 		D36C3B5F1E9C86B700708706 /* DeviceSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSize.swift; sourceTree = "<group>"; };
@@ -153,6 +156,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */,
 				B855684B026163E044992798 /* Pods_SmartLight.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -170,6 +174,7 @@
 		25454512D1569ADF0A61C50C /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D320F09C1EA1065900892CFF /* CSRmesh.framework */,
 				909CA87465BF568BD2F12BC0 /* Pods_SmartLight.framework */,
 			);
 			name = Frameworks;
@@ -209,6 +214,7 @@
 		D305B1AA1E9B330700443530 /* SmartLight */ = {
 			isa = PBXGroup;
 			children = (
+				D320F0A11EA1070400892CFF /* SmartLight-Bridging-Header.h */,
 				D305B1AF1E9B330700443530 /* Main.storyboard */,
 				D3FBC9321E9CBD8400929E81 /* Resources */,
 				D36C3B5E1E9C86B700708706 /* AppDefine */,
@@ -798,12 +804,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T82QHE8575;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartLight/Frameworks",
+				);
 				INFOPLIST_FILE = SmartLight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartLight/SmartLight-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -815,12 +827,18 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T82QHE8575;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/SmartLight/Frameworks",
+				);
 				INFOPLIST_FILE = SmartLight/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "SmartLight/SmartLight-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
