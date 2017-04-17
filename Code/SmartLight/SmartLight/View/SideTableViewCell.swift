@@ -12,6 +12,8 @@ class SideTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "SideCellReuseIdentifier"
     
+    @IBOutlet var lable: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

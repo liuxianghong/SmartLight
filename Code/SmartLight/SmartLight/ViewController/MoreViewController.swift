@@ -11,11 +11,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-struct MoreModel {
-    var title: String
-    var identifier: String
-}
-
 class MoreViewController: UIViewController, UITableViewDelegate {
 
     @IBOutlet var tableView: UITableView!
@@ -34,7 +29,7 @@ class MoreViewController: UIViewController, UITableViewDelegate {
             cell.tag = indexPath.row
             
             let model = section.sectionModels[indexPath.section].items[indexPath.row]
-            cell.textLabel?.text = model.title
+            cell.lable?.text = model.title
             
             return cell
         }
@@ -43,6 +38,8 @@ class MoreViewController: UIViewController, UITableViewDelegate {
         
         tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
             self.tableView.deselectRow(at: indexPath, animated: true)
+            let model = self.dataSource.sectionModels[indexPath.section].items[indexPath.row]
+            self.performSegue(withIdentifier: model.identifier, sender: nil)
         }).addDisposableTo(bag)
 //        tableView.rx_setDelegate(self).addDisposableTo(bag)
     }
@@ -53,21 +50,20 @@ class MoreViewController: UIViewController, UITableViewDelegate {
     }
     
     @IBAction func closeClick() {
-        UIView.animate(withDuration: 0.5) {
-            self.view.superview?.snp.updateConstraints { (ConstraintMaker) in
-                ConstraintMaker.left.equalTo(-SizeUtil.sidebarWidth)
-            }
-            self.view.superview?.superview?.layoutIfNeeded()
-        }
+        homeVC?.showSide(show: false)
     }
     
+    var homeVC: HomeViewController? {
+        return self.parent as? HomeViewController
+    }
     
     func getUsers() -> Observable<[SectionModel<String, MoreModel>]> {
         return Observable.create { (observer) -> Disposable in
             
             
-            let models = [MoreModel(title: "setting", identifier: "")
-                ,MoreModel(title: "about", identifier: "")]
+            let models = [MoreModel(title: R.string.localizable.moreWifisetting(), identifier: "settingIdentifier")
+                        , MoreModel(title: R.string.localizable.moreHowToUse(), identifier: "useIdentifier")
+                        , MoreModel(title: R.string.localizable.moreAbout(), identifier: "aboutIdentifier")]
             
             let section = [SectionModel(model: "", items: models)]
             

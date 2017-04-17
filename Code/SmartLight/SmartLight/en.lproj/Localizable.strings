@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  SmartLight
+
+  Created by 刘向宏 on 2017/4/17.
+  Copyright © 2017年 刘向宏. All rights reserved.
+*/
+
+"more-wifisetting" = "Wi-Fi Setting";
+"more-howToUse" = "HowToUse";
+"more-about" = "About";

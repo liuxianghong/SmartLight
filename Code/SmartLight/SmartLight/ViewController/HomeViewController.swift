@@ -33,7 +33,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
     
     func showSide(show: Bool) {
-        let width = show ? CGFloat(0) : SizeUtil.sidebarWidth
+        let width = show ? CGFloat(0) : -SizeUtil.sidebarWidth
         UIView.animate(withDuration: 0.5) {
             self.moreView.snp.updateConstraints { (ConstraintMaker) in
                 ConstraintMaker.left.equalTo(width)
