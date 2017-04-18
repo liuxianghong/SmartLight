@@ -46,7 +46,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         if enabled == 0 {
             manager.stopScan()
         } else {
-            //manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
         }
     }
     
@@ -62,7 +62,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            //manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
             break
         default:
             break
@@ -70,18 +70,23 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral.name,advertisementData,RSSI);
+        print(peripheral.identifier,advertisementData,RSSI);
 //        let array = advertisementData["kCBAdvDataServiceUUIDs"] as! NSArray
 //        for a in array {
 //            print(a)//FEF1
 //        }
         var enhancedAdvertismentData = advertisementData
         enhancedAdvertismentData[CSR_PERIPHERAL] = peripheral
-        meshServiceApi.processMeshAdvert(enhancedAdvertismentData, rssi: RSSI)
+        let r = meshServiceApi.processMeshAdvert(enhancedAdvertismentData, rssi: RSSI) as! Int
+        print("processMeshAdvert",r)
         
         peripheral.delegate = self
-        cperipheral = peripheral
-        central.connect(peripheral, options: [CBConnectPeripheralOptionNotifyOnConnectionKey: true])
+        
+        if r == 1 && cperipheral == nil {
+            cperipheral = peripheral
+            central.connect(peripheral, options: [CBConnectPeripheralOptionNotifyOnConnectionKey: true])
+        }
+        
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
@@ -132,7 +137,8 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         advertisementData[CSR_NotifiedValueForCharacteristic] = characteristic.value
         advertisementData[CSR_didUpdateValueForCharacteristic] = characteristic
         advertisementData[CSR_PERIPHERAL] = peripheral
-        meshServiceApi.processMeshAdvert(advertisementData, rssi: nil)
+        let r = meshServiceApi.processMeshAdvert(advertisementData, rssi: nil)
+        print("processMeshAdvert",r)
         
     }
     
