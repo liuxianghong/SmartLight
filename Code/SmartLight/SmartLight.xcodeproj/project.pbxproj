@@ -13,6 +13,8 @@
 		D304DEFB1EA474F3009B7091 /* SeetingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DEFA1EA474F3009B7091 /* SeetingViewController.swift */; };
 		D304DEFD1EA478E1009B7091 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DEFC1EA478E1009B7091 /* HelpViewController.swift */; };
 		D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DEFE1EA478EE009B7091 /* AboutViewController.swift */; };
+		D304DF011EA4ADBD009B7091 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */; };
+		D304DF031EA4CFFC009B7091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */; };
 		D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1AB1E9B330700443530 /* AppDelegate.swift */; };
 		D305B1B11E9B330700443530 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D305B1AF1E9B330700443530 /* Main.storyboard */; };
 		D305B1B31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1B21E9B330700443530 /* Assets.xcassets */; };
@@ -107,6 +109,8 @@
 		D304DEFA1EA474F3009B7091 /* SeetingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeetingViewController.swift; sourceTree = "<group>"; };
 		D304DEFC1EA478E1009B7091 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D304DEFE1EA478EE009B7091 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
+		D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D305B1A81E9B330700443530 /* SmartLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D305B1AB1E9B330700443530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D305B1B01E9B330700443530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -321,6 +325,7 @@
 			isa = PBXGroup;
 			children = (
 				D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */,
+				D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -351,6 +356,7 @@
 				D304DEFA1EA474F3009B7091 /* SeetingViewController.swift */,
 				D304DEFC1EA478E1009B7091 /* HelpViewController.swift */,
 				D304DEFE1EA478EE009B7091 /* AboutViewController.swift */,
+				D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -441,12 +447,12 @@
 					};
 					D305B1B91E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = T82QHE8575;
+						DevelopmentTeam = 6N9A6V47L5;
 						ProvisioningStyle = Automatic;
 					};
 					D305B1C81E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = T82QHE8575;
+						DevelopmentTeam = 6N9A6V47L5;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -570,6 +576,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36C3B901E9C86B700708706 /* RoundLable.swift in Sources */,
+				D304DF011EA4ADBD009B7091 /* AddDeviceViewController.swift in Sources */,
 				D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */,
 				D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */,
 				D36C3B9C1E9C86B700708706 /* NetworkUtil.swift in Sources */,
@@ -585,6 +592,7 @@
 				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
 				D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */,
 				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
+				D304DF031EA4CFFC009B7091 /* HomeViewModel.swift in Sources */,
 				D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */,
 				D36C3B951E9C86B700708706 /* DeviceTypeUtil.swift in Sources */,
 				D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */,
@@ -765,7 +773,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = T82QHE8575;
+				DEVELOPMENT_TEAM = 6N9A6V47L5;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -782,7 +790,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = T82QHE8575;
+				DEVELOPMENT_TEAM = 6N9A6V47L5;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -800,7 +808,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T82QHE8575;
+				DEVELOPMENT_TEAM = 6N9A6V47L5;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;
@@ -818,7 +826,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = T82QHE8575;
+				DEVELOPMENT_TEAM = 6N9A6V47L5;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;

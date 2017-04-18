@@ -12,6 +12,17 @@ class LightTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "LightCellReuseIdentifier"
     
+    @IBOutlet var nameLable: UILabel!
+    
+    var cellModel = DeviceCellModel() {
+        didSet {
+            guard oldValue.deviceID != cellModel.deviceID else {
+                return
+            }
+            nameLable.text = "\(cellModel.deviceID)"
+        }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

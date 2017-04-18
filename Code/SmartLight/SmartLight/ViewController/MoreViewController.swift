@@ -34,7 +34,7 @@ class MoreViewController: UIViewController, UITableViewDelegate {
             return cell
         }
         
-        getUsers().bind(to: tableView.rx.items(dataSource: dataSource)).addDisposableTo(bag)
+        getModels().bind(to: tableView.rx.items(dataSource: dataSource)).addDisposableTo(bag)
         
         tableView.rx.itemSelected.subscribe(onNext: { (indexPath) in
             self.tableView.deselectRow(at: indexPath, animated: true)
@@ -57,7 +57,7 @@ class MoreViewController: UIViewController, UITableViewDelegate {
         return self.parent as? HomeViewController
     }
     
-    func getUsers() -> Observable<[SectionModel<String, MoreModel>]> {
+    func getModels() -> Observable<[SectionModel<String, MoreModel>]> {
         return Observable.create { (observer) -> Disposable in
             
             
