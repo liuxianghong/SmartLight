@@ -38,6 +38,11 @@ class HomeViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        viewModel.reload()
+    }
+    
     func showSide(show: Bool) {
         let width = show ? CGFloat(0) : -SizeUtil.sidebarWidth
         UIView.animate(withDuration: 0.5) {

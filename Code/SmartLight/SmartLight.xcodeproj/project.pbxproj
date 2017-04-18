@@ -445,17 +445,17 @@
 				TargetAttributes = {
 					D305B1A71E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 					D305B1B91E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 					D305B1C81E9B330700443530 = {
 						CreatedOnToolsVersion = 8.3;
-						DevelopmentTeam = 6N9A6V47L5;
+						DevelopmentTeam = T82QHE8575;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -777,7 +777,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -794,7 +794,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				INFOPLIST_FILE = "SmartLight WatchKit Extension/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp.watchkitextension;
@@ -812,7 +812,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;
@@ -830,7 +830,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				IBSC_MODULE = SmartLight_WatchKit_Extension;
 				INFOPLIST_FILE = "SmartLight WatchKit App/Info.plist";
 				PRODUCT_BUNDLE_IDENTIFIER = com.Liuxh.SmartLight.watchkitapp;
@@ -849,7 +849,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -872,7 +872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6N9A6V47L5;
+				DEVELOPMENT_TEAM = T82QHE8575;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

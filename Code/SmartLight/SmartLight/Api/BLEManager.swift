@@ -9,7 +9,7 @@
 import UIKit
 import CoreBluetooth
 
-class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, MeshServiceApiDelegate {
+class BLEManager: NSObject {
 
     static let shareManager = BLEManager()
     
@@ -26,7 +26,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         
         meshServiceApi.setCentralManager(manager)
         meshServiceApi.meshServiceApiDelegate = self
-        meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
+        //meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
         //meshServiceApi.setContinuousLeScanEnabled(true)
     }
     
@@ -39,6 +39,14 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         return nil
     }
     
+    func setDiscoveryDevice(discovery: Bool) {
+        meshServiceApi.setDeviceDiscoveryFilterEnabled(discovery)
+    }
+    
+}
+
+
+extension BLEManager: MeshServiceApiDelegate {
     func didDiscoverDevice(_ uuid: CBUUID!, rssi: NSNumber!) {
         print("didDiscoverDevice", uuid)
         var device: BLEDevice? = nil
@@ -80,7 +88,10 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     func didTimeoutMessage(_ meshRequestId: NSNumber!) {
         print(meshRequestId)
     }
-    
+}
+
+
+extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
@@ -94,10 +105,10 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         print(peripheral.identifier,advertisementData,RSSI);
-//        let array = advertisementData["kCBAdvDataServiceUUIDs"] as! NSArray
-//        for a in array {
-//            print(a)//FEF1
-//        }
+        //        let array = advertisementData["kCBAdvDataServiceUUIDs"] as! NSArray
+        //        for a in array {
+        //            print(a)//FEF1
+        //        }
         var enhancedAdvertismentData = advertisementData
         enhancedAdvertismentData[CSR_PERIPHERAL] = peripheral
         let r = meshServiceApi.processMeshAdvert(enhancedAdvertismentData, rssi: RSSI) as! Int
@@ -165,12 +176,10 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         
     }
     
-    var bo = false
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         print("didUpdateNotificationStateFor",error,characteristic.uuid)
         
         
         
     }
-    
 }

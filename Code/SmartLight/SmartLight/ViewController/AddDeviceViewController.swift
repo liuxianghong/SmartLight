@@ -12,11 +12,20 @@ class AddDeviceViewController: UIViewController {
 
     @IBOutlet var titleLable: UILabel!
     
+    @IBOutlet var stopButton: UIButton!
+    
+    @IBOutlet var stateImageView: UIImageView!
+    
+    @IBOutlet var stateLable: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        titleLable.text = R.string.localizable.moreAbout()
+        titleLable.text = R.string.localizable.addTitle()
+        stopButton.setTitle(R.string.localizable.addStop(), for: UIControlState.normal)
+        stateLable.text = R.string.localizable.addStop()
+        stateLable.textColor = UIColor(colorLiteralRed: 0, green: 0xa4 / 255.0, blue: 0xef / 255.0, alpha: 1)
     }
     
     override func didReceiveMemoryWarning() {
@@ -24,10 +33,24 @@ class AddDeviceViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        BLEManager.shareManager.setDiscoveryDevice(discovery: true)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        BLEManager.shareManager.setDiscoveryDevice(discovery: false)
+    }
+    
     @IBAction func backClick() {
         self.navigationController?.popViewController(animated: true)
     }
     
+    @IBAction func stopClick() {
+        self.navigationController?.popViewController(animated: true)
+        BLEManager.shareManager.setDiscoveryDevice(discovery: false)
+    }
 
     /*
     // MARK: - Navigation

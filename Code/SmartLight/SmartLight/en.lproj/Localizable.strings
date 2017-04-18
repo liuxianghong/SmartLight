@@ -9,3 +9,8 @@
 "more-wifisetting" = "Wi-Fi Setting";
 "more-howToUse" = "HowToUse";
 "more-about" = "About";
+
+"add-title" = "Wi-Fi CONNECT";
+"add-stop" = "STOP";
+"add-connecting" = "CONNECTING";
+"add-canotconnect" = "CONNOT CONNECTING TO DEVICE";

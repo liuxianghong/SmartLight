@@ -14,9 +14,9 @@ class LightTableViewCell: UITableViewCell {
     
     @IBOutlet var nameLable: UILabel!
     
-    var cellModel = DeviceCellModel() {
+    var cellModel: DeviceCellModel? {
         didSet {
-            guard oldValue.deviceID != cellModel.deviceID else {
+            guard let cellModel = cellModel else {
                 return
             }
             nameLable.text = "\(cellModel.deviceID)"
@@ -34,4 +34,10 @@ class LightTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    var power = false
+    @IBAction func powerClick() {
+        let papi = PowerModelApi.sharedInstance() as! PowerModelApi
+        papi.setPowerState(Int((cellModel?.deviceID)!) as NSNumber, state: power as NSNumber, acknowledged: true)
+        power = !power
+    }
 }

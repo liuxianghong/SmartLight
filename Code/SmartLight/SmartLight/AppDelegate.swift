@@ -20,21 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = BLEManager.shareManager
         
         let devcie = BLEDevice()
-        devcie.deviceId = 5
+        devcie.deviceId = 32769
+        devcie.uuid = "BDBCB373-E363-890F-A101-F5B094368242"
         // 获取默认的 Realm 数据库
         let realm = try! Realm()
         try! realm.write {
-            realm.add(devcie)
+            realm.add(devcie, update: true)
         }
         
-        // 检索 Realm 数据库，找到小于 2 岁 的所有狗狗
-        let puppies = realm.objects(BLEDevice.self).filter("deviceId < 2")
-        puppies.count // => 0 因为目前还没有任何狗狗被添加到了 Realm 数据库中
-        print(puppies.count)
-        for item in puppies {
-            print(item.deviceId)
-            
-        }
+
         return true
     }
 

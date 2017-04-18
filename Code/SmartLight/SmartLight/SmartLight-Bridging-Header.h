@@ -3,4 +3,6 @@
 //
 
 #import <CSRmesh/MeshServiceApi.h>
+#import <CSRmesh/LightModelApi.h>
+#import <CSRmesh/PowerModelApi.h>
 #import <MagicalRecord/MagicalRecord.h>

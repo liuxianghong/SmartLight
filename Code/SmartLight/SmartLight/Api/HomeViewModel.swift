@@ -25,6 +25,8 @@ class HomeViewModel {
     
     fileprivate var deviceCells = [DeviceCellModel]()
     
+    fileprivate let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, DeviceCellModel>>()
+    
     var viewType = HomeViewType.default {
         didSet {
             guard oldValue != viewType else {
@@ -34,9 +36,23 @@ class HomeViewModel {
         }
     }
     
+    fileprivate func reloadDevices() {
+        deviceCells.removeAll()
+        let devices = BLEDevice.LoadAllDevices()
+        for item in devices {
+            deviceCells.append(DeviceCellModel(device: item))
+        }
+    }
+    
+    func reload() {
+        reloadDevices()
+        let sections = [SectionModel(model: "", items: self.deviceCells)]
+        dataSource.tableView(self.tableView!, observedEvent: Event.next(sections))
+    }
+    
     func setTableView(tableView: UITableView) {
+        reloadDevices()
         self.tableView = tableView
-        let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, DeviceCellModel>>()
         dataSource.configureCell = {
             section, tableView, indexPath, _ in
             let cell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.reuseIdentifier, for: indexPath) as! LightTableViewCell

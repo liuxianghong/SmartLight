@@ -18,14 +18,30 @@ struct MoreModel {
 
 
 struct DeviceCellModel {
-    var deviceID = Int(0)
-    var controlType = DeviceControlType.default
+    
+    var deviceID: Int {
+        return Int(deviceIn.deviceId)
+    }
+    var controlType = DeviceControlType.brightness
+    
+    var device: BLEDevice {
+        return deviceIn
+    }
+    
+    fileprivate var deviceIn: BLEDevice
+    
+    init(device: BLEDevice) {
+        self.deviceIn = device
+    }
 }
 
 enum DeviceControlType {
-    case `default`
-    case light
-    case temperature
+    case brightness
+    case edite
+    case clolorTemp
+    case timer
+    case delay
+    case delete
 }
 
 class BaseViewModel: NSObject {
