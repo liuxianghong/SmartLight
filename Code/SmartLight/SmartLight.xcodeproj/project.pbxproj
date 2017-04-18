@@ -27,6 +27,7 @@
 		D305B1D11E9B330700443530 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1D01E9B330700443530 /* ExtensionDelegate.swift */; };
 		D305B1D31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1D21E9B330700443530 /* Assets.xcassets */; };
 		D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1EA1E9B888A00443530 /* R.generated.swift */; };
+		D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */; };
 		D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F09C1EA1065900892CFF /* CSRmesh.framework */; };
 		D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34046681E9F733C003EB0AA /* SideTableViewCell.swift */; };
 		D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B5F1E9C86B700708706 /* DeviceSize.swift */; };
@@ -127,6 +128,7 @@
 		D305B1D21E9B330700443530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D305B1D41E9B330700443530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D305B1EA1E9B888A00443530 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
 		D320F09C1EA1065900892CFF /* CSRmesh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSRmesh.framework; path = SmartLight/Frameworks/CSRmesh.framework; sourceTree = "<group>"; };
 		D320F0A11EA1070400892CFF /* SmartLight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLight-Bridging-Header.h"; sourceTree = "<group>"; };
 		D34046681E9F733C003EB0AA /* SideTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SideTableViewCell.swift; sourceTree = "<group>"; };
@@ -326,6 +328,7 @@
 			children = (
 				D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */,
 				D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */,
+				D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -576,6 +579,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D36C3B901E9C86B700708706 /* RoundLable.swift in Sources */,
+				D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */,
 				D304DF011EA4ADBD009B7091 /* AddDeviceViewController.swift in Sources */,
 				D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */,
 				D36C3B871E9C86B700708706 /* UIImage+Color.swift in Sources */,

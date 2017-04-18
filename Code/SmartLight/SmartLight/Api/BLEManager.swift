@@ -18,6 +18,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     
     fileprivate let meshServiceApi = MeshServiceApi.sharedInstance() as! MeshServiceApi
     fileprivate let meshMTLCharacterUUID = "C4EDC000-9DAF-11E3-800A-00025B000B00"
+    fileprivate var bleDevices = [BLEDevice]()
     
     override fileprivate init() {
         super.init()
@@ -25,12 +26,34 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
         
         meshServiceApi.setCentralManager(manager)
         meshServiceApi.meshServiceApiDelegate = self
-        //meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
+        meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
         //meshServiceApi.setContinuousLeScanEnabled(true)
     }
     
+    func getDeviceByUUid(uuid: CBUUID) -> BLEDevice? {
+        for dev in bleDevices {
+            if dev.uuid == uuid.uuidString {
+                return dev
+            }
+        }
+        return nil
+    }
+    
     func didDiscoverDevice(_ uuid: CBUUID!, rssi: NSNumber!) {
-        print(uuid)
+        print("didDiscoverDevice", uuid)
+        var device: BLEDevice? = nil
+        if let dev = getDeviceByUUid(uuid: uuid) {
+            device = dev
+        } else {
+            device = BLEDevice()
+            device?.uuid = uuid.uuidString
+            bleDevices.append(device!)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
+                let hash = self.meshServiceApi.getDeviceHash(from: uuid)
+                print(hash!)
+                self.meshServiceApi.associateDevice(hash, authorisationCode: nil)
+            }
+        }
     }
     
     func didAssociateDevice(_ deviceId: NSNumber!, deviceHash: Data!, meshRequestId: NSNumber!) {
@@ -146,15 +169,7 @@ class BLEManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, Mesh
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         print("didUpdateNotificationStateFor",error,characteristic.uuid)
         
-        if !bo {
-            bo = true
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-                let hash = self.meshServiceApi.getDeviceHash(from: CBUUID(nsuuid: peripheral.identifier))
-                print(hash!)
-                self.meshServiceApi.associateDevice(hash, authorisationCode: nil)
-            }
-
-        }
+        
         
     }
     

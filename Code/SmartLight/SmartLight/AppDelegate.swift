@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import RealmSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,7 +17,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        BLEManager.shareManager
+        let _ = BLEManager.shareManager
+        
+        let devcie = BLEDevice()
+        devcie.deviceId = 5
+        // 获取默认的 Realm 数据库
+        let realm = try! Realm()
+        try! realm.write {
+            realm.add(devcie)
+        }
+        
+        // 检索 Realm 数据库，找到小于 2 岁 的所有狗狗
+        let puppies = realm.objects(BLEDevice.self).filter("deviceId < 2")
+        puppies.count // => 0 因为目前还没有任何狗狗被添加到了 Realm 数据库中
+        print(puppies.count)
+        for item in puppies {
+            print(item.deviceId)
+            
+        }
         return true
     }
 

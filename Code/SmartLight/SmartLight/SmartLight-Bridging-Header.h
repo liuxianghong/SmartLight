@@ -3,3 +3,4 @@
 //
 
 #import <CSRmesh/MeshServiceApi.h>
+#import <MagicalRecord/MagicalRecord.h>
