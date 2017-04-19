@@ -38,7 +38,7 @@ class HomeViewModel {
     
     fileprivate func reloadDevices() {
         deviceCells.removeAll()
-        let devices = BLEDevice.LoadAllDevices()
+        let devices = DeviceManager.shareManager.bleDevices
         for item in devices {
             deviceCells.append(DeviceCellModel(device: item))
         }

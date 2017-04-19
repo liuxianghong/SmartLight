@@ -9,9 +9,21 @@
 import UIKit
 import CoreBluetooth
 
+enum NoticeCmd: String {
+    case discover = "didDiscoverDevice"
+    case associate = "didAssociateDevice"
+    case associating = "isAssociatingDevice"
+    case appearanceating = "isAssocididUpdateAppearanceatingDevice"
+    case timeout = "didTimeoutMessage"
+    case powerState = "didGetPowerState"
+    case lightState = "didGetLightState"
+}
+
 class BLEManager: NSObject {
 
     static let shareManager = BLEManager()
+    
+    static let NOTICE_RECV_MESSAGE = NSNotification.Name(rawValue: "DEV_NOTICE_RECV_MESSAGE")
     
     fileprivate var manager: CBCentralManager!
     fileprivate var cperipheral: CBPeripheral?
@@ -23,7 +35,6 @@ class BLEManager: NSObject {
     override fileprivate init() {
         super.init()
         manager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
-        
         meshServiceApi.setCentralManager(manager)
         meshServiceApi.meshServiceApiDelegate = self
         //meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
@@ -39,37 +50,48 @@ class BLEManager: NSObject {
         return nil
     }
     
-    func setDiscoveryDevice(discovery: Bool) {
-        meshServiceApi.setDeviceDiscoveryFilterEnabled(discovery)
+    func broadcastMessage(_ msg: [String: Any]) {
+        print("broadcastMessage: ",msg.description)
+        DispatchQueue.main.async { 
+            NotificationCenter.default.post(name: BLEManager.NOTICE_RECV_MESSAGE
+                , object: self
+                , userInfo: ["recvMsg": msg]
+            )
+        }
     }
-    
 }
 
 
 extension BLEManager: MeshServiceApiDelegate {
     func didDiscoverDevice(_ uuid: CBUUID!, rssi: NSNumber!) {
-        print("didDiscoverDevice", uuid)
-        var device: BLEDevice? = nil
-        if let dev = getDeviceByUUid(uuid: uuid) {
-            device = dev
-        } else {
-            device = BLEDevice()
-            device?.uuid = uuid.uuidString
-            bleDevices.append(device!)
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-                let hash = self.meshServiceApi.getDeviceHash(from: uuid)
-                print(hash!)
-                self.meshServiceApi.associateDevice(hash, authorisationCode: nil)
-            }
-        }
+        
+        let msg:[String : Any] = ["cmd": NoticeCmd.discover, "uuid": uuid, "rssi": rssi]
+        broadcastMessage(msg)
+        
+//        print("didDiscoverDevice", uuid)
+//        var device: BLEDevice? = nil
+//        if let dev = getDeviceByUUid(uuid: uuid) {
+//            device = dev
+//        } else {
+//            device = BLEDevice()
+//            device?.uuid = uuid.uuidString
+//            bleDevices.append(device!)
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
+//                let hash = self.meshServiceApi.getDeviceHash(from: uuid)
+//                print(hash!)
+//                self.meshServiceApi.associateDevice(hash, authorisationCode: nil)
+//            }
+//        }
     }
     
     func didAssociateDevice(_ deviceId: NSNumber!, deviceHash: Data!, meshRequestId: NSNumber!) {
-        print(deviceId)
+        let msg:[String : Any] = ["cmd": NoticeCmd.associate, "deviceHash": deviceHash, "deviceId": deviceId, "meshRequestId": meshRequestId]
+        broadcastMessage(msg)
     }
     
     func isAssociatingDevice(_ deviceHash: Data!, stepsCompleted: NSNumber!, totalSteps: NSNumber!, meshRequestId: NSNumber!) {
-        print("isAssociatingDevice",deviceHash,stepsCompleted,totalSteps,meshRequestId)
+        let msg:[String : Any] = ["cmd": NoticeCmd.associating, "stepsCompleted": stepsCompleted, "totalSteps": totalSteps, "meshRequestId": meshRequestId]
+        broadcastMessage(msg)
     }
     
     func setScannerEnabled(_ enabled: NSNumber!) {
@@ -82,11 +104,13 @@ extension BLEManager: MeshServiceApiDelegate {
     }
     
     func didUpdateAppearance(_ deviceHash: Data!, appearanceValue: Data!, shortName: Data!) {
-        print(deviceHash)
+        let msg:[String : Any] = ["cmd": NoticeCmd.appearanceating, "deviceHash": deviceHash, "appearanceValue": appearanceValue, "shortName": shortName]
+        broadcastMessage(msg)
     }
     
     func didTimeoutMessage(_ meshRequestId: NSNumber!) {
-        print(meshRequestId)
+        let msg:[String : Any] = ["cmd": NoticeCmd.timeout, "meshRequestId": meshRequestId]
+        broadcastMessage(msg)
     }
 }
 
@@ -178,8 +202,19 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
         print("didUpdateNotificationStateFor",error,characteristic.uuid)
-        
-        
-        
+    }
+}
+
+extension BLEManager: PowerModelApiDelegate {
+    func didGetPowerState(_ deviceId: NSNumber!, state: NSNumber!, meshRequestId: NSNumber!) {
+        let msg:[String : Any] = ["cmd": NoticeCmd.powerState, "deviceId": deviceId, "state": state, "meshRequestId": meshRequestId]
+        broadcastMessage(msg)
+    }
+}
+
+extension BLEManager: LightModelApiDelegate {
+    func didGetLightState(_ deviceId: NSNumber!, red: NSNumber!, green: NSNumber!, blue: NSNumber!, level: NSNumber!, powerState: NSNumber!, colorTemperature: NSNumber!, supports: NSNumber!, meshRequestId: NSNumber!) {
+        let msg:[String : Any] = ["cmd": NoticeCmd.lightState, "deviceId": deviceId, "state": powerState, "meshRequestId": meshRequestId, "red": red, "green": green, "blue": blue, "level": level, "colorTemperature": colorTemperature, "supports": supports]
+        broadcastMessage(msg)
     }
 }

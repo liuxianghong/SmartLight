@@ -9,10 +9,20 @@
 import UIKit
 import RealmSwift
 
+// 设备链路状态
+enum LinkState: Int {
+    case unlink // 已断开
+    case linked // 连接中
+}
+
 class BLEDevice: Object {
     dynamic var uuid: String?
     dynamic var name: String?
     dynamic var deviceId: Int32 = 0
+    
+    var linkState = LinkState.unlink
+    var color = UIColor.white
+    var level = UInt8(0)
     
     
     override static func primaryKey() -> String? {
@@ -20,7 +30,7 @@ class BLEDevice: Object {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["tmpID"]
+        return ["linkState", "color", "level"]
     }
     
     func save() {
@@ -30,13 +40,4 @@ class BLEDevice: Object {
         }
     }
     
-    class func LoadAllDevices() -> [BLEDevice] {
-        let realm = try! Realm()
-        let devices = realm.objects(BLEDevice.self)
-        var resluts = [BLEDevice]()
-        for device in devices {
-            resluts.append(device)
-        }
-        return resluts
-    }
 }

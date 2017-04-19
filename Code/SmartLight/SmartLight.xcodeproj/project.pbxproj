@@ -14,7 +14,6 @@
 		D304DEFD1EA478E1009B7091 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DEFC1EA478E1009B7091 /* HelpViewController.swift */; };
 		D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DEFE1EA478EE009B7091 /* AboutViewController.swift */; };
 		D304DF011EA4ADBD009B7091 /* AddDeviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */; };
-		D304DF031EA4CFFC009B7091 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */; };
 		D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1AB1E9B330700443530 /* AppDelegate.swift */; };
 		D305B1B11E9B330700443530 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D305B1AF1E9B330700443530 /* Main.storyboard */; };
 		D305B1B31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1B21E9B330700443530 /* Assets.xcassets */; };
@@ -27,6 +26,9 @@
 		D305B1D11E9B330700443530 /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1D01E9B330700443530 /* ExtensionDelegate.swift */; };
 		D305B1D31E9B330700443530 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D305B1D21E9B330700443530 /* Assets.xcassets */; };
 		D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D305B1EA1E9B888A00443530 /* R.generated.swift */; };
+		D306A1C11EA731BC00CD960E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C01EA731BC00CD960E /* DeviceManager.swift */; };
+		D306A1C31EA731DE00CD960E /* DeviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C21EA731DE00CD960E /* DeviceSession.swift */; };
+		D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C51EA7322E00CD960E /* HomeViewModel.swift */; };
 		D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */; };
 		D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F09C1EA1065900892CFF /* CSRmesh.framework */; };
 		D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34046681E9F733C003EB0AA /* SideTableViewCell.swift */; };
@@ -111,7 +113,6 @@
 		D304DEFC1EA478E1009B7091 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		D304DEFE1EA478EE009B7091 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDeviceViewController.swift; sourceTree = "<group>"; };
-		D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D305B1A81E9B330700443530 /* SmartLight.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartLight.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D305B1AB1E9B330700443530 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D305B1B01E9B330700443530 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -128,6 +129,9 @@
 		D305B1D21E9B330700443530 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D305B1D41E9B330700443530 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D305B1EA1E9B888A00443530 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
+		D306A1C01EA731BC00CD960E /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
+		D306A1C21EA731DE00CD960E /* DeviceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSession.swift; sourceTree = "<group>"; };
+		D306A1C51EA7322E00CD960E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
 		D320F09C1EA1065900892CFF /* CSRmesh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSRmesh.framework; path = SmartLight/Frameworks/CSRmesh.framework; sourceTree = "<group>"; };
 		D320F0A11EA1070400892CFF /* SmartLight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLight-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -242,6 +246,7 @@
 				D36C3BA31E9C8D4C00708706 /* Api */,
 				D36C3BA41E9C8D4C00708706 /* Model */,
 				D36C3BA51E9C8D4C00708706 /* View */,
+				D306A1C41EA7322E00CD960E /* ViewModel */,
 				D36C3BA61E9C8D4C00708706 /* ViewController */,
 				D305B1AB1E9B330700443530 /* AppDelegate.swift */,
 				D305B1EA1E9B888A00443530 /* R.generated.swift */,
@@ -272,6 +277,14 @@
 				D305B1D41E9B330700443530 /* Info.plist */,
 			);
 			path = "SmartLight WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		D306A1C41EA7322E00CD960E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				D306A1C51EA7322E00CD960E /* HomeViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		D36C3B5E1E9C86B700708706 /* AppDefine */ = {
@@ -327,8 +340,9 @@
 			isa = PBXGroup;
 			children = (
 				D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */,
-				D304DF021EA4CFFC009B7091 /* HomeViewModel.swift */,
 				D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */,
+				D306A1C01EA731BC00CD960E /* DeviceManager.swift */,
+				D306A1C21EA731DE00CD960E /* DeviceSession.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -596,7 +610,7 @@
 				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
 				D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */,
 				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
-				D304DF031EA4CFFC009B7091 /* HomeViewModel.swift in Sources */,
+				D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */,
 				D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */,
 				D36C3B951E9C86B700708706 /* DeviceTypeUtil.swift in Sources */,
 				D305B1AC1E9B330700443530 /* AppDelegate.swift in Sources */,
@@ -611,7 +625,9 @@
 				D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */,
 				D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */,
 				D36C3B8E1E9C86B700708706 /* PenetrateView.swift in Sources */,
+				D306A1C11EA731BC00CD960E /* DeviceManager.swift in Sources */,
 				D36C3B891E9C86B700708706 /* CircularProgressView.swift in Sources */,
+				D306A1C31EA731DE00CD960E /* DeviceSession.swift in Sources */,
 				D36C3B961E9C86B700708706 /* DiskStatus.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

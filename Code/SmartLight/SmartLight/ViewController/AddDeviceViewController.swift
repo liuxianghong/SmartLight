@@ -35,13 +35,53 @@ class AddDeviceViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        BLEManager.shareManager.setDiscoveryDevice(discovery: true)
+        
+        DeviceSession.request(BLEDevice()
+        , command: .discovery
+        , expired: 10) { [weak self](error, device) in
+            if error == .success {
+                self?.addDevice(device: device!)
+            }
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        BLEManager.shareManager.setDiscoveryDevice(discovery: false)
+        NotificationCenter.default.removeObserver(self)
     }
+    
+    func addDevice(device: BLEDevice) {
+        DeviceSession.request(device
+        , command: .associate
+        , expired: 10) { [weak self](error, device) in
+            if error == .success {
+                device?.save()
+            }
+        }
+    }
+    
+//    func deviceDidRecvMsg(_ sender: Notification) {
+//        guard uuid == nil else {
+//            return
+//        }
+//        guard let message = sender.userInfo?["recvMsg"] as? [String: Any]
+//            , let cmd = message["cmd"] as? NoticeCmd
+//            , cmd == .discover
+//            , let uuid = message["uuid"] as? CBUUID
+//            , let _ = message["rssi"] as? Int else
+//        {
+//            return
+//        }
+//        self.uuid = uuid
+//        
+//        let bDevice = BLEDevice()
+//        bDevice.uuid = self.uuid?.uuidString
+//        DeviceSession.request(bDevice, command: SessionComand.add) { (error, device) in
+//            
+//        }
+//    }
+    
+    
     
     @IBAction func backClick() {
         self.navigationController?.popViewController(animated: true)
@@ -49,7 +89,6 @@ class AddDeviceViewController: UIViewController {
     
     @IBAction func stopClick() {
         self.navigationController?.popViewController(animated: true)
-        BLEManager.shareManager.setDiscoveryDevice(discovery: false)
     }
 
     /*
