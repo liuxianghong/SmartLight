@@ -35,11 +35,14 @@ class LightTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
-    var power = false
     @IBAction func powerClick() {
         cellModel?.device.power = !(cellModel?.device.power)!
         DeviceSession.request((cellModel?.device)!, command: .power) { (error, device) in
             DDLogDebug("powerClick request is: \(error) \(String(describing: device?.deviceId))")
         }
+    }
+    
+    @IBAction func lvealClick() {
+        DeviceManager.shareManager.deleteDevice(device: (cellModel?.device)!)
     }
 }

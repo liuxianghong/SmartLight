@@ -45,4 +45,25 @@ class DeviceManager {
             bleDevicesIn.append(device)
         }
     }
+    
+    func deleteDevice(device: BLEDevice) {
+        DeviceSession.request(device
+        , command: .reset
+        , expired: 10) { (error, dev) in
+            if error == .success {
+                self.deleteDeviceIn(device: device)
+            }
+        }
+    }
+    
+    fileprivate func deleteDeviceIn(device: BLEDevice) {
+        guard let realm = try? Realm(),let _ = device.uuid, device.deviceId > 0 else {return}
+        if let index = bleDevicesIn.index(of: device) {
+            try? realm.write {
+                realm.delete(device)
+                bleDevicesIn.remove(at: index)
+            }
+        }
+        
+    }
 }

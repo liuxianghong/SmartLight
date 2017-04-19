@@ -103,7 +103,7 @@ extension BLEManager: MeshServiceApiDelegate {
     }
     
     func setScannerEnabled(_ enabled: NSNumber!) {
-        print(enabled)
+        //print(enabled)
         if enabled == 0 {
             manager.stopScan()
         } else {
@@ -136,7 +136,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        print(peripheral.identifier,advertisementData,RSSI);
+        //print(peripheral.identifier,advertisementData,RSSI);
         //        let array = advertisementData["kCBAdvDataServiceUUIDs"] as! NSArray
         //        for a in array {
         //            print(a)//FEF1
@@ -144,7 +144,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         var enhancedAdvertismentData = advertisementData
         enhancedAdvertismentData[CSR_PERIPHERAL] = peripheral
         let r = meshServiceApi.processMeshAdvert(enhancedAdvertismentData, rssi: RSSI) as! Int
-        print("processMeshAdvert",r)
+        //print("processMeshAdvert",r)
         
         peripheral.delegate = self
         
@@ -156,7 +156,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
-        print("didConnect",peripheral)
+        //print("didConnect",peripheral)
         peripheral.discoverServices(nil)//[CBUUID(string: "FEF1")]
     }
     
@@ -164,7 +164,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         guard let services = peripheral.services else {
             return
         }
-        print("didDiscoverServices", services)
+        //print("didDiscoverServices", services)
         for service in services {
             peripheral.discoverCharacteristics(nil, for: service)
         }
@@ -175,11 +175,11 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             return
         }
         
-        print("didDiscoverCharacteristicsFor")
+        //print("didDiscoverCharacteristicsFor")
         
         meshServiceApi.connectBridge(peripheral, enableBridgeNotification: 1)
         for characteristic in characteristics {
-            print(characteristic.uuid.uuidString)
+            //print(characteristic.uuid.uuidString)
             if characteristic.uuid.uuidString == meshMTLCharacterUUID {
                 peripheral.setNotifyValue(true, for: characteristic)
                 peripheral.discoverDescriptors(for: characteristic)
@@ -192,24 +192,24 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverDescriptorsFor characteristic: CBCharacteristic, error: Error?) {
-        print(characteristic,characteristic.descriptors,error)
+        //print(characteristic,characteristic.descriptors,error)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
-        print("didUpdateValueFor",error,characteristic.uuid)
+        //print("didUpdateValueFor",error,characteristic.uuid)
         
         var advertisementData = [String: Any]()
         advertisementData[CBAdvertisementDataIsConnectable] = false
         advertisementData[CSR_NotifiedValueForCharacteristic] = characteristic.value
         advertisementData[CSR_didUpdateValueForCharacteristic] = characteristic
         advertisementData[CSR_PERIPHERAL] = peripheral
-        let r = meshServiceApi.processMeshAdvert(advertisementData, rssi: nil)
-        print("processMeshAdvert",r)
+        let _ = meshServiceApi.processMeshAdvert(advertisementData, rssi: nil)
+        //print("processMeshAdvert",r)
         
     }
     
     func peripheral(_ peripheral: CBPeripheral, didUpdateNotificationStateFor characteristic: CBCharacteristic, error: Error?) {
-        print("didUpdateNotificationStateFor",error,characteristic.uuid)
+        //print("didUpdateNotificationStateFor",error,characteristic.uuid)
     }
 }
 

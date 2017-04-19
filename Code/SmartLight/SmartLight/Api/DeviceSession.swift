@@ -100,7 +100,6 @@ class DeviceSession: NSObject {
             switch cmd {
             case .discover:
                 if let uuid = message["uuid"] as? CBUUID
-                    , let _ = message["rssi"] as? Int
                 {
                     device.uuid = uuid.uuidString
                     self.completion?(.success, self.device)
@@ -119,6 +118,8 @@ class DeviceSession: NSObject {
                     self.device.deviceId = Int32(deviceId)
                     self.completion?(.success, self.device)
                 }
+            case .associating:
+                break
             default:
                 self.completion?(.timeout, self.device)
             }
@@ -128,6 +129,13 @@ class DeviceSession: NSObject {
             case .reset:
                 if let deviceId = message["deviceId"] as? Int32, device.deviceId == deviceId {
                     self.completion?(.success, self.device)
+                }
+            case .appearanceating:
+                if let deviceHash = message["deviceHash"] as? NSData {
+                    let data = meshServiceApi.getDeviceHash(from: CBUUID(string: device.uuid!))!
+                    if data.hashValue == deviceHash.hashValue {
+                        self.completion?(.success, self.device)
+                    }
                 }
             default:
                 break
