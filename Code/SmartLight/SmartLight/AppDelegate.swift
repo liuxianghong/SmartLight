@@ -28,6 +28,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             realm.add(devcie, update: true)
         }
         
+        let fileLogger = DDFileLogger(logFileManager: DDLogFileManagerDefault())!
+        fileLogger.maximumFileSize = 10 * 1024 * 1024
+        fileLogger.rollingFrequency = 240 * 60 * 60
+        fileLogger.logFileManager.maximumNumberOfLogFiles = 30
+        fileLogger.logFileManager.logFilesDiskQuota = 0
+        DDLog.add(DDTTYLogger.sharedInstance)
+        DDLog.add(fileLogger)
+        defaultDebugLevel = DDLogLevel.all
 
         return true
     }

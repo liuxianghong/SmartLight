@@ -5,4 +5,5 @@
 #import <CSRmesh/MeshServiceApi.h>
 #import <CSRmesh/LightModelApi.h>
 #import <CSRmesh/PowerModelApi.h>
+#import <CSRmesh/ConfigModelApi.h>
 #import <MagicalRecord/MagicalRecord.h>

@@ -15,6 +15,7 @@ enum SessionComand {
     case state
     case discovery
     case associate
+    case reset
 }
 
 enum SessionError: Int {
@@ -42,7 +43,9 @@ class DeviceSession: NSObject {
     fileprivate let meshServiceApi = MeshServiceApi.sharedInstance() as! MeshServiceApi
     fileprivate let powerModelApi = PowerModelApi.sharedInstance() as! PowerModelApi
     fileprivate let lightModelApi = LightModelApi.sharedInstance() as! LightModelApi
+    fileprivate let configModelApi = ConfigModelApi.sharedInstance() as! ConfigModelApi
     
+    @discardableResult
     class func request(_ device: BLEDevice
         , command: SessionComand
         , timeout: Foundation.TimeInterval = 0
@@ -119,6 +122,32 @@ class DeviceSession: NSObject {
             default:
                 self.completion?(.timeout, self.device)
             }
+            
+        case .reset:
+            switch cmd {
+            case .reset:
+                if let deviceId = message["deviceId"] as? Int32, device.deviceId == deviceId {
+                    self.completion?(.success, self.device)
+                }
+            default:
+                break
+            }
+        case .power:
+            guard let meshRequestId = message["meshRequestId"] as? NSNumber
+                , meshRequestId == self.requstId else {
+                    return
+            }
+            switch cmd {
+            case .powerState:
+                if let state = message["state"] as? Int
+                , let deviceId = message["deviceId"] as? Int32
+                , device.deviceId == deviceId {
+                    device.power = (state == 1)
+                    self.completion?(.success, self.device)
+                }
+            default:
+                self.completion?(.timeout, self.device)
+            }
         default:
             break
         }
@@ -132,6 +161,10 @@ class DeviceSession: NSObject {
             let uuid = CBUUID(string: device.uuid!)
             let hash = self.meshServiceApi.getDeviceHash(from: uuid)
             requstId = meshServiceApi.associateDevice(hash, authorisationCode: nil)
+        case .reset:
+            configModelApi.resetDevice(self.device.deviceId as NSNumber)
+        case .power:
+            requstId = powerModelApi.setPowerState(device.deviceId as NSNumber, state: device.power ? 1 : 0, acknowledged: true)
         default:
             break
         }
@@ -148,6 +181,8 @@ class DeviceSession: NSObject {
         switch command! {
         case .discovery:
             meshServiceApi.setDeviceDiscoveryFilterEnabled(false)
+        case .reset:
+            break
         default:
             meshServiceApi.killTransaction(requstId)
             break

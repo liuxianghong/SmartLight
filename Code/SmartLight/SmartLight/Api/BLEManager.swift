@@ -17,6 +17,7 @@ enum NoticeCmd: String {
     case timeout = "didTimeoutMessage"
     case powerState = "didGetPowerState"
     case lightState = "didGetLightState"
+    case reset = "didResetDevice"
 }
 
 class BLEManager: NSObject {
@@ -29,6 +30,9 @@ class BLEManager: NSObject {
     fileprivate var cperipheral: CBPeripheral?
     
     fileprivate let meshServiceApi = MeshServiceApi.sharedInstance() as! MeshServiceApi
+    fileprivate let powerModelApi = PowerModelApi.sharedInstance() as! PowerModelApi
+    fileprivate let lightModelApi = LightModelApi.sharedInstance() as! LightModelApi
+    fileprivate let configModelApi = ConfigModelApi.sharedInstance() as! ConfigModelApi
     fileprivate let meshMTLCharacterUUID = "C4EDC000-9DAF-11E3-800A-00025B000B00"
     fileprivate var bleDevices = [BLEDevice]()
     
@@ -39,6 +43,10 @@ class BLEManager: NSObject {
         meshServiceApi.meshServiceApiDelegate = self
         //meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
         //meshServiceApi.setContinuousLeScanEnabled(true)
+        
+        powerModelApi.powerModelApiDelegate = self
+        lightModelApi.lightModelApiDelegate = self
+        configModelApi.configModelApiDelegate = self
     }
     
     func getDeviceByUUid(uuid: CBUUID) -> BLEDevice? {
@@ -215,6 +223,13 @@ extension BLEManager: PowerModelApiDelegate {
 extension BLEManager: LightModelApiDelegate {
     func didGetLightState(_ deviceId: NSNumber!, red: NSNumber!, green: NSNumber!, blue: NSNumber!, level: NSNumber!, powerState: NSNumber!, colorTemperature: NSNumber!, supports: NSNumber!, meshRequestId: NSNumber!) {
         let msg:[String : Any] = ["cmd": NoticeCmd.lightState, "deviceId": deviceId, "state": powerState, "meshRequestId": meshRequestId, "red": red, "green": green, "blue": blue, "level": level, "colorTemperature": colorTemperature, "supports": supports]
+        broadcastMessage(msg)
+    }
+}
+
+extension BLEManager: ConfigModelApiDelegate {
+    func didResetDevice(_ deviceId: NSNumber!, deviceHash: Data!) {
+        let msg:[String : Any] = ["cmd": NoticeCmd.reset, "deviceId": deviceId, "deviceHash": deviceHash]
         broadcastMessage(msg)
     }
 }

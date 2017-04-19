@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CocoaLumberjack
 
 class LightTableViewCell: UITableViewCell {
 
@@ -36,8 +37,9 @@ class LightTableViewCell: UITableViewCell {
 
     var power = false
     @IBAction func powerClick() {
-        let papi = PowerModelApi.sharedInstance() as! PowerModelApi
-        papi.setPowerState(Int((cellModel?.deviceID)!) as NSNumber, state: power as NSNumber, acknowledged: true)
-        power = !power
+        cellModel?.device.power = !(cellModel?.device.power)!
+        DeviceSession.request((cellModel?.device)!, command: .power) { (error, device) in
+            DDLogDebug("powerClick request is: \(error) \(String(describing: device?.deviceId))")
+        }
     }
 }

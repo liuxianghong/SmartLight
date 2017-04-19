@@ -37,6 +37,12 @@ class DeviceManager {
         guard let realm = try? Realm(),let _ = device.uuid, device.deviceId > 0 else {return}
         try? realm.write {
             realm.add(device, update: true)
+            for item in bleDevicesIn {
+                if item.deviceId == device.deviceId {
+                    return
+                }
+            }
+            bleDevicesIn.append(device)
         }
     }
 }
