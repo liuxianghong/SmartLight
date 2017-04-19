@@ -49,7 +49,7 @@ class DeviceSession: NSObject {
         , resend: UInt32 = 0
         , expired: Foundation.TimeInterval = 3
         , completion: ((SessionError, BLEDevice?) -> Void)?)
-        -> Void
+        -> DeviceSession
     {
         let session = DeviceSession()
         session.device = device
@@ -81,6 +81,8 @@ class DeviceSession: NSObject {
         
         // 发送命令
         session.send()
+        
+        return session
     }
     
     func deviceDidRecvMsg(_ sender: Notification) {
@@ -135,7 +137,7 @@ class DeviceSession: NSObject {
         }
     }
     
-    fileprivate func stop() {
+    func stop() {
         NotificationCenter.default.removeObserver(self)
         self.stopStepTimer()
         self.stopExpiredTimer()

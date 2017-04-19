@@ -12,5 +12,6 @@
 
 "add-title" = "Wi-Fi CONNECT";
 "add-stop" = "STOP";
+"add-tryAgin" = "TRY AGAIN";
 "add-connecting" = "CONNECTING";
 "add-canotconnect" = "CONNOT CONNECTING TO DEVICE";

@@ -12,3 +12,6 @@
 
 "add-title" = "Wi-Fi连接";
 "add-stop" = "停止";
+"add-tryAgin" = "重试";
+"add-connecting" = "连接中";
+"add-canotconnect" = "无法连接设备";

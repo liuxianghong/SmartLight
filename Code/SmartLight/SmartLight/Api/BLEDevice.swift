@@ -23,6 +23,7 @@ class BLEDevice: Object {
     var linkState = LinkState.unlink
     var color = UIColor.white
     var level = UInt8(0)
+    var power = false
     
     
     override static func primaryKey() -> String? {
@@ -30,14 +31,6 @@ class BLEDevice: Object {
     }
     
     override static func ignoredProperties() -> [String] {
-        return ["linkState", "color", "level"]
+        return ["linkState", "color", "level", "power"]
     }
-    
-    func save() {
-        guard let realm = try? Realm(),let _ = uuid, deviceId > 0 else {return}
-        try? realm.write {
-            realm.add(self)
-        }
-    }
-    
 }

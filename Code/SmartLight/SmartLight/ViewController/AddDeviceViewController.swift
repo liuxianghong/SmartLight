@@ -18,14 +18,34 @@ class AddDeviceViewController: UIViewController {
     
     @IBOutlet var stateLable: UILabel!
     
+    fileprivate var request: DeviceSession?
+    
+    fileprivate var isAdding = false {
+        didSet {
+            request = nil
+            if isAdding {
+                stopButton.setTitle(R.string.localizable.addStop(), for: UIControlState.normal)
+                stateLable.text = R.string.localizable.addConnecting()
+                stateLable.textColor = UIColor(colorLiteralRed: 0, green: 0xa4 / 255.0, blue: 0xef / 255.0, alpha: 1)
+                stateImageView.isHighlighted = false
+            } else {
+                stopButton.setTitle(R.string.localizable.addTryAgin(), for: UIControlState.normal)
+                stateLable.text = R.string.localizable.addCanotconnect()
+                stateLable.textColor = UIColor(colorLiteralRed: 0xb3 / 255.0, green: 0xb3 / 255.0, blue: 0xb3 / 255.0, alpha: 1)
+                stateImageView.isHighlighted = true
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
         titleLable.text = R.string.localizable.addTitle()
-        stopButton.setTitle(R.string.localizable.addStop(), for: UIControlState.normal)
-        stateLable.text = R.string.localizable.addStop()
-        stateLable.textColor = UIColor(colorLiteralRed: 0, green: 0xa4 / 255.0, blue: 0xef / 255.0, alpha: 1)
+        isAdding = true
+        let image = R.image.wifi()?.withRenderingMode(UIImageRenderingMode.alwaysTemplate)
+        stateImageView.highlightedImage = image
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -36,13 +56,7 @@ class AddDeviceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        DeviceSession.request(BLEDevice()
-        , command: .discovery
-        , expired: 10) { [weak self](error, device) in
-            if error == .success {
-                self?.addDevice(device: device!)
-            }
-        }
+        beginAdd()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -50,45 +64,50 @@ class AddDeviceViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
-    func addDevice(device: BLEDevice) {
-        DeviceSession.request(device
-        , command: .associate
+    fileprivate func beginAdd() {
+        request = DeviceSession.request(BLEDevice()
+            , command: .discovery
         , expired: 10) { [weak self](error, device) in
             if error == .success {
-                device?.save()
+                self?.addDevice(device: device!)
+            } else {
+                self?.addResult(bo: false)
             }
         }
     }
     
-//    func deviceDidRecvMsg(_ sender: Notification) {
-//        guard uuid == nil else {
-//            return
-//        }
-//        guard let message = sender.userInfo?["recvMsg"] as? [String: Any]
-//            , let cmd = message["cmd"] as? NoticeCmd
-//            , cmd == .discover
-//            , let uuid = message["uuid"] as? CBUUID
-//            , let _ = message["rssi"] as? Int else
-//        {
-//            return
-//        }
-//        self.uuid = uuid
-//        
-//        let bDevice = BLEDevice()
-//        bDevice.uuid = self.uuid?.uuidString
-//        DeviceSession.request(bDevice, command: SessionComand.add) { (error, device) in
-//            
-//        }
-//    }
+    fileprivate func addDevice(device: BLEDevice) {
+        request = DeviceSession.request(device
+        , command: .associate
+        , expired: 20) { [weak self](error, device) in
+            if error == .success {
+                DeviceManager.shareManager.addDevice(device: device!)
+            }
+            self?.addResult(bo: error == .success)
+        }
+    }
     
-    
+    fileprivate func addResult(bo: Bool) {
+        if bo {
+            self.backClick()
+        } else {
+            isAdding = false
+        }
+    }
     
     @IBAction func backClick() {
+        request?.stop()
+        request = nil
         self.navigationController?.popViewController(animated: true)
     }
     
     @IBAction func stopClick() {
-        self.navigationController?.popViewController(animated: true)
+        if isAdding {
+            self.backClick()
+        } else {
+            beginAdd()
+            isAdding = true
+        }
     }
 
     /*
