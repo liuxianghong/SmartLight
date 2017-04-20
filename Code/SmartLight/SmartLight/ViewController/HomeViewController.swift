@@ -94,6 +94,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func deleteClick(sender: UIButton) {
+        viewModel.viewType = (viewModel.viewType == .delete) ? .default : .delete
     }
 
 }

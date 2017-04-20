@@ -42,6 +42,7 @@ enum DeviceControlType {
     case timer
     case delay
     case delete
+    case color
 }
 
 class BaseViewModel: NSObject {

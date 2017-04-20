@@ -32,7 +32,7 @@ class HomeViewModel {
             guard oldValue != viewType else {
                 return
             }
-            self.tableView?.reloadData()
+            reload()
         }
     }
     
@@ -40,7 +40,16 @@ class HomeViewModel {
         deviceCells.removeAll()
         let devices = DeviceManager.shareManager.bleDevices
         for item in devices {
-            deviceCells.append(DeviceCellModel(device: item))
+            var model = DeviceCellModel(device: item)
+            switch viewType {
+            case .default:
+                model.controlType = .brightness
+            case .edite:
+                model.controlType = .edite
+            case .delete:
+                model.controlType = .delete
+            }
+            deviceCells.append(model)
         }
     }
     
