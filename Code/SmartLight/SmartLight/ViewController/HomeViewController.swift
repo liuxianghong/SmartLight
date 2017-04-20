@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     @IBOutlet var switchButton: UIButton!
     @IBOutlet var moreView: UIView!
     @IBOutlet var tableView: UITableView!
+    fileprivate var loadingView = LoadingView()
     
     fileprivate let viewModel = HomeViewModel()
     
@@ -28,6 +29,12 @@ class HomeViewController: UIViewController {
             ConstraintMaker.width.equalTo(SizeUtil.sidebarWidth)
             ConstraintMaker.left.equalTo(-SizeUtil.sidebarWidth)
         }
+        
+        view.addSubview(loadingView)
+        loadingView.snp.makeConstraints { (make) in
+            make.edges.equalTo(0)
+        }
+        loadingView.hide(false)
         
         tableView.tableFooterView = UIView()
         viewModel.setTableView(tableView: tableView)
@@ -50,6 +57,19 @@ class HomeViewController: UIViewController {
                 ConstraintMaker.left.equalTo(width)
             }
             self.view.layoutIfNeeded()
+        }
+    }
+    
+    func deleteDevice(_ device: BLEDevice) {
+        loadingView.show(true)
+        DeviceSession.request(device
+            , command: .reset
+        , expired: 10) { (error, dev) in
+            if error == .success {
+                DeviceManager.shareManager.deleteDevice(device: device)
+                self.viewModel.reload()
+            }
+            self.loadingView.hide(true)
         }
     }
     

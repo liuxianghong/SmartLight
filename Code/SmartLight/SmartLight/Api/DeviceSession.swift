@@ -11,6 +11,7 @@ import UIKit
 enum SessionComand {
     case power
     case level
+    case color
     case colorTemp
     case state
     case discovery
@@ -21,8 +22,7 @@ enum SessionComand {
 enum SessionError: Int {
     case success // 成功
     case timeout // 超时
-    case unlink // 断连错误
-    case unknown // 未知
+    case unknown
 }
 
 class DeviceSession: NSObject {
@@ -88,6 +88,8 @@ class DeviceSession: NSObject {
         return session
     }
     
+    
+    
     func deviceDidRecvMsg(_ sender: Notification) {
         guard let message = sender.userInfo?["recvMsg"] as? [String: Any]
             , let cmd = message["cmd"] as? NoticeCmd else
@@ -97,67 +99,46 @@ class DeviceSession: NSObject {
         
         switch command! {
         case .discovery:
-            switch cmd {
-            case .discover:
-                if let uuid = message["uuid"] as? CBUUID
-                {
-                    device.uuid = uuid.uuidString
-                    self.completion?(.success, self.device)
-                }
-            default:
-                break
-            }
+            discoveryRecvHandle(cmd: cmd, message: message)
         case .associate:
             guard let meshRequestId = message["meshRequestId"] as? NSNumber
                 , meshRequestId == self.requstId else {
                 return
             }
-            switch cmd {
-            case .associate:
-                if let deviceId = message["deviceId"] as? Int {
-                    self.device.deviceId = Int32(deviceId)
-                    self.completion?(.success, self.device)
-                }
-            case .associating:
-                break
-            default:
-                self.completion?(.timeout, self.device)
-            }
+            associateRecvHandle(cmd: cmd, message: message)
             
         case .reset:
-            switch cmd {
-            case .reset:
-                if let deviceId = message["deviceId"] as? Int32, device.deviceId == deviceId {
-                    self.completion?(.success, self.device)
-                }
-            case .appearanceating:
-                if let deviceHash = message["deviceHash"] as? NSData {
-                    let data = meshServiceApi.getDeviceHash(from: CBUUID(string: device.uuid!))!
-                    if data.hashValue == deviceHash.hashValue {
-                        self.completion?(.success, self.device)
-                    }
-                }
-            default:
-                break
-            }
+            resetRecvHandle(cmd: cmd, message: message)
         case .power:
             guard let meshRequestId = message["meshRequestId"] as? NSNumber
                 , meshRequestId == self.requstId else {
                     return
             }
-            switch cmd {
-            case .powerState:
-                if let state = message["state"] as? Int
-                , let deviceId = message["deviceId"] as? Int32
-                , device.deviceId == deviceId {
-                    device.power = (state == 1)
-                    self.completion?(.success, self.device)
-                }
-            default:
-                self.completion?(.timeout, self.device)
+            powerRecvHandle(cmd: cmd, message: message)
+        case .colorTemp:
+            guard let meshRequestId = message["meshRequestId"] as? NSNumber
+                , meshRequestId == self.requstId else {
+                    return
             }
-        default:
-            break
+            lightStateRecvHandle(cmd: cmd, message: message)
+        case .level:
+            guard let meshRequestId = message["meshRequestId"] as? NSNumber
+                , meshRequestId == self.requstId else {
+                    return
+            }
+            lightStateRecvHandle(cmd: cmd, message: message)
+        case .state:
+            guard let meshRequestId = message["meshRequestId"] as? NSNumber
+                , meshRequestId == self.requstId else {
+                    return
+            }
+            lightStateRecvHandle(cmd: cmd, message: message)
+        case .color:
+            guard let meshRequestId = message["meshRequestId"] as? NSNumber
+                , meshRequestId == self.requstId else {
+                    return
+            }
+            lightStateRecvHandle(cmd: cmd, message: message)
         }
     }
     
@@ -168,13 +149,32 @@ class DeviceSession: NSObject {
         case .associate:
             let uuid = CBUUID(string: device.uuid!)
             let hash = self.meshServiceApi.getDeviceHash(from: uuid)
-            requstId = meshServiceApi.associateDevice(hash, authorisationCode: nil)
+            requstId = meshServiceApi.associateDevice(hash
+                , authorisationCode: nil)
         case .reset:
             configModelApi.resetDevice(self.device.deviceId as NSNumber)
         case .power:
-            requstId = powerModelApi.setPowerState(device.deviceId as NSNumber, state: device.power ? 1 : 0, acknowledged: true)
-        default:
-            break
+            requstId = powerModelApi.setPowerState(device.deviceId as NSNumber
+                , state: device.power ? 1 : 0
+                , acknowledged: true)
+        case .colorTemp:
+            requstId = lightModelApi.setColorTemperature(device.deviceId as NSNumber
+                , temperature: device.temperature as NSNumber
+                , duration: 0)
+        case .level:
+            requstId = lightModelApi.setLevel(device.deviceId as NSNumber
+                , level: device.level as NSNumber
+                , acknowledged: true)
+        case .state:
+            requstId = lightModelApi.getState(device.deviceId as NSNumber)
+        case .color:
+            requstId = lightModelApi.setRgb(device.deviceId as NSNumber
+                , red: Int(device.color.red * 255) as NSNumber
+                , green: Int(device.color.green * 255) as NSNumber
+                , blue: Int(device.color.blue * 255) as NSNumber
+                , level: device.level as NSNumber
+                , duration: 0
+                , acknowledged: true)
         }
     }
     
@@ -192,8 +192,95 @@ class DeviceSession: NSObject {
         case .reset:
             break
         default:
-            meshServiceApi.killTransaction(requstId)
+            if requstId != 0 {
+                meshServiceApi.killTransaction(requstId)
+            }
+        }
+    }
+    
+    fileprivate func discoveryRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        switch cmd {
+        case .discover:
+            if let uuid = message["uuid"] as? CBUUID
+            {
+                device.uuid = uuid.uuidString
+                self.completion?(.success, self.device)
+            }
+        default:
             break
+        }
+    }
+    
+    fileprivate func associateRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        switch cmd {
+        case .associate:
+            if let deviceId = message["deviceId"] as? Int {
+                requstId = 0
+                self.device.deviceId = Int32(deviceId)
+                self.completion?(.success, self.device)
+            }
+        case .associating:
+            break
+        default:
+            self.completion?(.timeout, self.device)
+        }
+    }
+    
+    fileprivate func resetRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        switch cmd {
+        case .reset:
+            if let deviceId = message["deviceId"] as? Int32, device.deviceId == deviceId {
+                self.completion?(.success, self.device)
+            }
+        case .appearanceating:
+            if let deviceHash = message["deviceHash"] as? NSData {
+                let data = meshServiceApi.getDeviceHash(from: CBUUID(string: device.uuid!))!
+                if data.hashValue == deviceHash.hashValue {
+                    self.completion?(.success, self.device)
+                }
+            }
+        default:
+            break
+        }
+    }
+    
+    fileprivate func powerRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        switch cmd {
+        case .powerState:
+            if let state = message["state"] as? Int
+                , let deviceId = message["deviceId"] as? Int32
+                , device.deviceId == deviceId {
+                requstId = 0
+                device.power = (state == 1)
+                self.device.linkState = .linked
+                self.completion?(.success, self.device)
+            }
+        default:
+            self.completion?(.timeout, self.device)
+        }
+    }
+    
+    fileprivate func lightStateRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        switch cmd {
+        case .lightState:
+            if let state = message["state"] as? Int
+                , let deviceId = message["deviceId"] as? Int32
+                , device.deviceId == deviceId
+                , let red = message["red"] as? UInt8
+                , let green = message["green"] as? UInt8
+                , let blue = message["blue"] as? UInt8
+                , let level = message["level"] as? UInt8
+                , let colorTemperature = message["colorTemperature"] as? UInt8 {
+                requstId = 0
+                device.power = (state == 1)
+                device.temperature = colorTemperature
+                device.level = level
+                device.color = UIColor(red: CGFloat(red) / 255, green: CGFloat(green) / 255, blue: CGFloat(blue) / 255, alpha: 1)
+                self.device.linkState = .linked
+                self.completion?(.success, self.device)
+            }
+        default:
+            self.completion?(.timeout, self.device)
         }
     }
     
@@ -220,7 +307,6 @@ class DeviceSession: NSObject {
     fileprivate func stepTimerTrigger() {
         elapsed += interval
         if elapsed >= timeout {
-            // 当前重发次数大于最大重发次数，且函数过期定时器为nil时，函数超时
             if resendCount >= resendLimit && expiredTimer == nil {
                 completion?(.timeout, self.device)
             } else {

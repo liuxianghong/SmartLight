@@ -26,6 +26,8 @@ class BLEManager: NSObject {
     
     static let NOTICE_RECV_MESSAGE = NSNotification.Name(rawValue: "DEV_NOTICE_RECV_MESSAGE")
     
+    static let bleQueue = DispatchQueue(label: "bleQueue", attributes: [])
+    
     fileprivate var manager: CBCentralManager!
     fileprivate var cperipheral: CBPeripheral?
     
@@ -38,11 +40,9 @@ class BLEManager: NSObject {
     
     override fileprivate init() {
         super.init()
-        manager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
+        manager = CBCentralManager(delegate: self, queue: BLEManager.bleQueue)
         meshServiceApi.setCentralManager(manager)
         meshServiceApi.meshServiceApiDelegate = self
-        //meshServiceApi.setDeviceDiscoveryFilterEnabled(true)
-        //meshServiceApi.setContinuousLeScanEnabled(true)
         
         powerModelApi.powerModelApiDelegate = self
         lightModelApi.lightModelApiDelegate = self
@@ -75,21 +75,6 @@ extension BLEManager: MeshServiceApiDelegate {
         
         let msg:[String : Any] = ["cmd": NoticeCmd.discover, "uuid": uuid, "rssi": rssi]
         broadcastMessage(msg)
-        
-//        print("didDiscoverDevice", uuid)
-//        var device: BLEDevice? = nil
-//        if let dev = getDeviceByUUid(uuid: uuid) {
-//            device = dev
-//        } else {
-//            device = BLEDevice()
-//            device?.uuid = uuid.uuidString
-//            bleDevices.append(device!)
-//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + .seconds(2)) {
-//                let hash = self.meshServiceApi.getDeviceHash(from: uuid)
-//                print(hash!)
-//                self.meshServiceApi.associateDevice(hash, authorisationCode: nil)
-//            }
-//        }
     }
     
     func didAssociateDevice(_ deviceId: NSNumber!, deviceHash: Data!, meshRequestId: NSNumber!) {
@@ -183,9 +168,8 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
             if characteristic.uuid.uuidString == meshMTLCharacterUUID {
                 peripheral.setNotifyValue(true, for: characteristic)
                 peripheral.discoverDescriptors(for: characteristic)
-                print("meshMTLCharacterUUID",meshMTLCharacterUUID)
+                //print("meshMTLCharacterUUID",meshMTLCharacterUUID)
             }
-            
         }
         
         //objc_setAssociatedObject(peripheral, "isBridgeService", true, .OBJC_ASSOCIATION_RETAIN_NONATOMIC);

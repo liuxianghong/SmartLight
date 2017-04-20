@@ -29,6 +29,7 @@
 		D306A1C11EA731BC00CD960E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C01EA731BC00CD960E /* DeviceManager.swift */; };
 		D306A1C31EA731DE00CD960E /* DeviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C21EA731DE00CD960E /* DeviceSession.swift */; };
 		D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C51EA7322E00CD960E /* HomeViewModel.swift */; };
+		D30C9F831EA8724400836DE9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C9F821EA8724400836DE9 /* LoadingView.swift */; };
 		D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */; };
 		D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F09C1EA1065900892CFF /* CSRmesh.framework */; };
 		D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D34046681E9F733C003EB0AA /* SideTableViewCell.swift */; };
@@ -132,6 +133,7 @@
 		D306A1C01EA731BC00CD960E /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		D306A1C21EA731DE00CD960E /* DeviceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSession.swift; sourceTree = "<group>"; };
 		D306A1C51EA7322E00CD960E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D30C9F821EA8724400836DE9 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
 		D320F09C1EA1065900892CFF /* CSRmesh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSRmesh.framework; path = SmartLight/Frameworks/CSRmesh.framework; sourceTree = "<group>"; };
 		D320F0A11EA1070400892CFF /* SmartLight-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SmartLight-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -309,6 +311,7 @@
 		D36C3B661E9C86B700708706 /* AppUIKIt */ = {
 			isa = PBXGroup;
 			children = (
+				D30C9F821EA8724400836DE9 /* LoadingView.swift */,
 				D36C3B671E9C86B700708706 /* CircularProgressView.swift */,
 				D36C3B6B1E9C86B700708706 /* MessageBoxView.swift */,
 				D36C3B6C1E9C86B700708706 /* PenetrateView.swift */,
@@ -609,6 +612,7 @@
 				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,
 				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
 				D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */,
+				D30C9F831EA8724400836DE9 /* LoadingView.swift in Sources */,
 				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
 				D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */,
 				D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */,
