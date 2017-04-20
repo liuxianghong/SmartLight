@@ -41,6 +41,9 @@ class LightTableViewCell: UITableViewCell {
         // Initialization code
         
         slider.setThumbImage(R.image.barN(), for: UIControlState.normal)
+        slider.setThumbImage(R.image.barN(), for: UIControlState.highlighted)
+        slider.maximumValue = 255
+        slider.minimumValue = 0
         
         let longPressLeft = UILongPressGestureRecognizer { (long) in
             guard let long = long as? UILongPressGestureRecognizer else { return }
@@ -182,6 +185,12 @@ class LightTableViewCell: UITableViewCell {
             return
         }
         
+        cellModel.device.color = UIColor(red: 0.3, green: 0.1, blue: 0.1, alpha: 0.2)
+        cellModel.device.level = 255
+        DeviceSession.request(cellModel.device, command: .color) { (error, device) in
+            print(error)
+        }
+        
         switch cellModel.controlType {
         case .timer:
             self.cellModel?.controlType = .brightness
@@ -202,6 +211,17 @@ class LightTableViewCell: UITableViewCell {
             break
         }
     }
+    
+    @IBAction func sliderClick() {
+        guard let cellModel = cellModel else {
+            return
+        }
+        cellModel.device.level = UInt8(slider.value)
+        DeviceSession.request(cellModel.device, command: .level) { (error, device) in
+            DDLogDebug("level: \(device?.level)")
+        }
+    }
+    
     
     fileprivate func getHomeVC() -> HomeViewController? {
         var next = superview
