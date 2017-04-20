@@ -40,7 +40,7 @@ class BLEManager: NSObject {
     
     override fileprivate init() {
         super.init()
-        manager = CBCentralManager(delegate: self, queue: BLEManager.bleQueue)
+        manager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
         meshServiceApi.setCentralManager(manager)
         meshServiceApi.meshServiceApiDelegate = self
         
