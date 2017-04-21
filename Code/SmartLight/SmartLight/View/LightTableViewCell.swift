@@ -47,7 +47,7 @@ class LightTableViewCell: UITableViewCell {
         slider.setThumbImage(R.image.barN(), for: UIControlState.normal)
         slider.setThumbImage(R.image.barN(), for: UIControlState.highlighted)
         slider.maximumValue = 255
-        slider.minimumValue = 0
+        slider.minimumValue = 1
         
         let longPressLeft = UILongPressGestureRecognizer { (long) in
             guard let long = long as? UILongPressGestureRecognizer else { return }
@@ -97,6 +97,14 @@ class LightTableViewCell: UITableViewCell {
     }
     
     fileprivate func updateSlider() {
+        guard let cellModel = cellModel else {
+            return
+        }
+        slider.isHidden = cellModel.controlType == .edite
+        switch cellModel.controlType {
+        default:
+            break
+        }
     }
     
     fileprivate func updateRightButton() {
@@ -121,6 +129,8 @@ class LightTableViewCell: UITableViewCell {
             maxvalueLabel.isHidden = false
             currentvalueLabel.isHidden = false
             rightNameLabel.text = R.string.localizable.timer()
+            minvalueLabel.text = "1"
+            maxvalueLabel.text = "120"
             rightNameLabel.isHidden = false
         case .color:
             rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
@@ -141,10 +151,14 @@ class LightTableViewCell: UITableViewCell {
             minvalueLabel.isHidden = false
             maxvalueLabel.isHidden = false
             currentvalueLabel.isHidden = false
+            minvalueLabel.text = "1"
+            maxvalueLabel.text = "90"
         case .delete:
             rightButton.setBackgroundImage(R.image.delete(), for: .normal)
         case .deleteSure:
             rightButton.setBackgroundImage(R.image.deleteSure(), for: .normal)
+        case .edite:
+            break
             
 //            let anim = CAKeyframeAnimation(keyPath: "transform.rotation")
 //            anim.values = [(-3 / 180 * Double.pi), (3 / 180 * Double.pi),(-3 / 180 * Double.pi)]
@@ -159,8 +173,6 @@ class LightTableViewCell: UITableViewCell {
 //            let k = 360.0 * (Double.pi * 2)
 //            keyframeAni.values = [5 / k, 0, -5 / k, 0, 5 / k]
 //            rightButton.layer.add(keyframeAni, forKey: "keyframeAni")
-        default:
-            rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
         }
     }
     
