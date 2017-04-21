@@ -19,6 +19,21 @@ class DeviceManager {
         return bleDevicesIn
     }
     
+    var linking = false {
+        didSet {
+            guard oldValue != linking else {
+                return
+            }
+            
+            if !linking {
+                for device in bleDevicesIn {
+                    device.linkState = .unlink
+                }
+            }
+            
+        }
+    }
+    
     fileprivate init() {
         bleDevicesIn = loadAllDevices()
     }

@@ -102,9 +102,16 @@ class LightTableViewCell: UITableViewCell {
         }
         slider.isHidden = cellModel.controlType == .edite
         switch cellModel.controlType {
+        case .brightness:
+            setSliderImage(image: (cellModel.device.linkState == .linked) ? R.image.barN() : R.image.linking())
         default:
             break
         }
+    }
+    
+    fileprivate func setSliderImage(image: UIImage?) {
+        slider.setThumbImage(image, for: UIControlState.normal)
+        slider.setThumbImage(image, for: UIControlState.highlighted)
     }
     
     fileprivate func updateRightButton() {

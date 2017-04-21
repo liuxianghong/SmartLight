@@ -36,7 +36,6 @@ class BLEManager: NSObject {
     fileprivate let lightModelApi = LightModelApi.sharedInstance() as! LightModelApi
     fileprivate let configModelApi = ConfigModelApi.sharedInstance() as! ConfigModelApi
     fileprivate let meshMTLCharacterUUID = "C4EDC000-9DAF-11E3-800A-00025B000B00"
-    fileprivate var bleDevices = [BLEDevice]()
     
     override fileprivate init() {
         super.init()
@@ -49,15 +48,6 @@ class BLEManager: NSObject {
         configModelApi.configModelApiDelegate = self
     }
     
-    func getDeviceByUUid(uuid: CBUUID) -> BLEDevice? {
-        for dev in bleDevices {
-            if dev.uuid == uuid.uuidString {
-                return dev
-            }
-        }
-        return nil
-    }
-    
     func broadcastMessage(_ msg: [String: Any]) {
         print("broadcastMessage: ",msg.description)
         DispatchQueue.main.async { 
@@ -66,6 +56,11 @@ class BLEManager: NSObject {
                 , userInfo: ["recvMsg": msg]
             )
         }
+    }
+    
+    func startScan() {
+        manager.stopScan()
+        manager.scanForPeripherals(withServices: nil, options: nil)
     }
 }
 
@@ -92,7 +87,7 @@ extension BLEManager: MeshServiceApiDelegate {
         if enabled == 0 {
             manager.stopScan()
         } else {
-            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            manager.scanForPeripherals(withServices: nil, options: nil)
         }
     }
     
@@ -113,11 +108,12 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         switch central.state {
         case .poweredOn:
-            manager.scanForPeripherals(withServices: [CBUUID(string: "FEF1")], options: nil)
+            manager.scanForPeripherals(withServices: nil, options: nil)//[CBUUID(string: "FEF1")]
             break
         default:
             break
         }
+        DeviceManager.shareManager.linking = (central.state == .poweredOn)
     }
     
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
@@ -143,6 +139,10 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         //print("didConnect",peripheral)
         peripheral.discoverServices(nil)//[CBUUID(string: "FEF1")]
+    }
+    
+    func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
+        meshServiceApi.disconnectBridge(peripheral)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {

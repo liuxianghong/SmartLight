@@ -116,7 +116,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func bleClick(sender: UIButton) {
-        
+        BLEManager.shareManager.startScan()
     }
     
     @IBAction func switchClick(sender: UIButton) {
