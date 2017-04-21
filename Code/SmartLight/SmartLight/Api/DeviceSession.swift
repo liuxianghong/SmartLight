@@ -261,6 +261,10 @@ class DeviceSession: NSObject {
     }
     
     fileprivate func lightStateRecvHandle(cmd: NoticeCmd, message: [String: Any]) {
+        if device.isInvalid {
+            self.completion?(.unknown, nil)
+            return
+        }
         switch cmd {
         case .lightState:
             if let state = message["state"] as? Int

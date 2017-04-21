@@ -66,6 +66,12 @@ class BLEDevice: Object {
     
     var update: ((BLEDevice) -> ())?
     
+    var isInvalid: Bool {
+        get {
+            return (timer == nil)
+        }
+    }
+    
     fileprivate var timer: DispatchSourceTimer?
     fileprivate var linkedTimeInterval = Foundation.TimeInterval(0)
     
@@ -92,7 +98,7 @@ class BLEDevice: Object {
         timer.resume()
     }
     
-    fileprivate func stopCheckLink() {
+    func stopCheckLink() {
         guard let timer = timer else {return}
         timer.cancel()
         self.timer = nil

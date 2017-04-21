@@ -15,6 +15,7 @@ class MessageBoxView: UIView {
         var font = UIFont.systemFont(ofSize: 15)//R.font.fZLTHJWGB10(size: 15)
         var normalColor = UIColor(white: 0, alpha: 1.0)
         var highlightedColor = UIColor(white: 0, alpha: 0.5)
+        var backgroundColor = UIColor.clear
         var action: ((MessageBoxView, UIButton) -> Void)?
     }
     
@@ -156,7 +157,7 @@ class MessageBoxView: UIView {
         var firstButton: UIButton?
         for (index, value) in buttons.enumerated() {
             let button = UIButton()
-            button.backgroundColor = UIColor.clear
+            button.backgroundColor = value.backgroundColor
             button.tag = index
             button.addTarget(self, action: #selector(buttonPressed(_:)), for: .touchUpInside)
             button.setTitle(value.title, for: UIControlState())
@@ -212,8 +213,8 @@ class MessageBoxView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        let scale = UIScreen.main.bounds.width / (1920.0 / 3)
-        contentView.transform = CGAffineTransform(scaleX: scale, y: scale)
+        //let scale = UIScreen.main.bounds.width / (1920.0 / 3)
+        //contentView.transform = CGAffineTransform(scaleX: scale, y: scale)
         
         self.layoutIfNeeded()
     }

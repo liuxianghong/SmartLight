@@ -19,6 +19,10 @@ class LightTableViewCell: UITableViewCell {
     @IBOutlet var slider: UISlider!
     @IBOutlet var temperatureImageView: UIImageView!
     @IBOutlet var colorImageView: UIImageView!
+    @IBOutlet var minvalueLabel: UILabel!
+    @IBOutlet var maxvalueLabel: UILabel!
+    @IBOutlet var currentvalueLabel: UILabel!
+    @IBOutlet var rightNameLabel: UILabel!
     
     fileprivate var checkTimer: Timer?
     
@@ -101,24 +105,54 @@ class LightTableViewCell: UITableViewCell {
         }
         
         rightButton.isHidden = false
-        rightButton.layer.removeAllAnimations()
+        
+        temperatureImageView.isHidden = true
+        colorImageView.isHidden = true
+        minvalueLabel.isHidden = true
+        maxvalueLabel.isHidden = true
+        currentvalueLabel.isHidden = true
+        rightNameLabel.isHidden = true
+        
+//        rightButton.layer.removeAllAnimations()
         switch cellModel.controlType {
         case .timer:
             rightButton.setBackgroundImage(R.image.time(), for: .normal)
+            minvalueLabel.isHidden = false
+            maxvalueLabel.isHidden = false
+            currentvalueLabel.isHidden = false
+            rightNameLabel.text = R.string.localizable.timer()
+            rightNameLabel.isHidden = false
+        case .color:
+            rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
+            rightNameLabel.text = R.string.localizable.color()
+            rightNameLabel.isHidden = false
+            colorImageView.isHidden = false
         case .clolorTemp:
             rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
+            rightNameLabel.text = R.string.localizable.colorTemperature()
+            rightNameLabel.isHidden = false
+            temperatureImageView.isHidden = false
+        case .brightness:
+            rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
+            rightNameLabel.text = R.string.localizable.brightness()
+            rightNameLabel.isHidden = false
         case .delay:
             rightButton.isHidden = true
+            minvalueLabel.isHidden = false
+            maxvalueLabel.isHidden = false
+            currentvalueLabel.isHidden = false
         case .delete:
             rightButton.setBackgroundImage(R.image.delete(), for: .normal)
+        case .deleteSure:
+            rightButton.setBackgroundImage(R.image.deleteSure(), for: .normal)
             
-            let anim = CAKeyframeAnimation(keyPath: "transform.rotation")
-            anim.values = [(-3 / 180 * Double.pi), (3 / 180 * Double.pi),(-3 / 180 * Double.pi)]
-            
-            anim.repeatCount = Float(MAX_CANON)
-            anim.duration = 0.2
-            anim.autoreverses = true
-            rightButton.layer.add(anim, forKey: nil)
+//            let anim = CAKeyframeAnimation(keyPath: "transform.rotation")
+//            anim.values = [(-3 / 180 * Double.pi), (3 / 180 * Double.pi),(-3 / 180 * Double.pi)]
+//            
+//            anim.repeatCount = Float(MAX_CANON)
+//            anim.duration = 0.2
+//            anim.autoreverses = true
+//            rightButton.layer.add(anim, forKey: nil)
 //            let keyframeAni = CAKeyframeAnimation(keyPath: "transform.rotation")
 //            keyframeAni.duration = 0.2
 //            keyframeAni.repeatCount = 10000;
@@ -202,10 +236,17 @@ class LightTableViewCell: UITableViewCell {
             updateRightButton()
             updateSlider()
         case .clolorTemp:
+            self.cellModel?.controlType = .color
+            updateRightButton()
+            updateSlider()
+        case .color:
             self.cellModel?.controlType = .brightness
             updateRightButton()
             updateSlider()
         case .delete:
+            self.cellModel?.controlType = .deleteSure
+            updateRightButton()
+        case .deleteSure:
             getHomeVC()?.deleteDevice((cellModel.device))
         default:
             break
@@ -213,12 +254,33 @@ class LightTableViewCell: UITableViewCell {
     }
     
     @IBAction func sliderClick() {
+        print("sliderClick")
+        guard let cellModel = cellModel else {
+            return
+        }
+        switch cellModel.controlType {
+        case .delay, .timer:
+            startTimer()
+        default:
+            break
+        }
+    }
+    
+    @IBAction func sliderClickInside() {
+        sliderSet()
+    }
+    
+    @IBAction func siderClickOutside() {
+        sliderSet()
+    }
+    
+    fileprivate func sliderSet() {
         guard let cellModel = cellModel else {
             return
         }
         cellModel.device.level = UInt8(slider.value)
         DeviceSession.request(cellModel.device, command: .level) { (error, device) in
-            DDLogDebug("level: \(device?.level)")
+            //DDLogDebug("level: \(device?.level)")
         }
     }
     

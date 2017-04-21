@@ -15,3 +15,12 @@
 "add-tryAgin" = "TRY AGAIN";
 "add-connecting" = "CONNECTING";
 "add-canotconnect" = "CONNOT CONNECTING TO DEVICE";
+
+"yes" = "YES";
+"no" = "NO";
+"delete" = "delete";
+
+"color" = "Color";
+"color Temperature" = "Color Temperature";
+"timer" = "Timer";
+"brightness" = "Brightness";

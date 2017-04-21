@@ -41,6 +41,7 @@ enum DeviceControlType {
     case clolorTemp
     case timer
     case delay
+    case deleteSure
     case delete
     case color
 }

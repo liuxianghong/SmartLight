@@ -51,6 +51,7 @@ class DeviceManager {
     func deleteDevice(device: BLEDevice) {
         guard let realm = try? Realm(),let _ = device.uuid, device.deviceId > 0 else {return}
         if let index = bleDevicesIn.index(of: device) {
+            device.stopCheckLink()
             try? realm.write {
                 realm.delete(device)
                 bleDevicesIn.remove(at: index)

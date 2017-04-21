@@ -15,3 +15,12 @@
 "add-tryAgin" = "重试";
 "add-connecting" = "连接中";
 "add-canotconnect" = "无法连接设备";
+
+"yes" = "是";
+"no" = "否";
+"delete" = "删除";
+
+"color" = "颜色";
+"color Temperature" = "色温";
+"timer" = "定时";
+"brightness" = "亮度";

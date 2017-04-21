@@ -61,16 +61,54 @@ class HomeViewController: UIViewController {
     }
     
     func deleteDevice(_ device: BLEDevice) {
-        loadingView.show(true)
-        DeviceSession.request(device
-            , command: .reset
-        , expired: 10) { (error, dev) in
-            if error == .success {
-                DeviceManager.shareManager.deleteDevice(device: device)
-                self.viewModel.reload()
-            }
-            self.loadingView.hide(true)
+        
+        let cancelItem = MessageBoxView.Item()
+        cancelItem.title = R.string.localizable.no()
+        cancelItem.font = UIFont.systemFont(ofSize: 15)
+        cancelItem.normalColor = UIColor(white: 1, alpha: 1)
+        cancelItem.highlightedColor = UIColor(white: 0.8, alpha: 1)
+        cancelItem.backgroundColor = UIColor(hexString: "0D244C") ?? UIColor.clear
+        cancelItem.action = { (view, _) -> Void in
+            view.hideView(true)
         }
+        
+        let confirmItem = MessageBoxView.Item()
+        confirmItem.title = R.string.localizable.yes()
+        confirmItem.normalColor = UIColor(rgb: 0x0c234e)
+        confirmItem.font = UIFont.systemFont(ofSize: 15)
+        confirmItem.highlightedColor = UIColor(rgb: 0xfc7410).withAlphaComponent(0.8)
+        confirmItem.action = { [weak self](view, _) -> Void in
+            view.hideView(true) { (_) in
+                self?.loadingView.show(true)
+                DeviceSession.request(device
+                    , command: .reset
+                , expired: 10) { (error, dev) in
+                    if error == .success {
+                        DeviceManager.shareManager.deleteDevice(device: device)
+                        self?.viewModel.reload()
+                    }
+                    self?.loadingView.hide(true)
+                }
+            }
+        }
+        
+        let customizeLabel = UILabel()
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 3
+        let attributes = [NSParagraphStyleAttributeName: paragraphStyle
+            , NSForegroundColorAttributeName: UIColor(rgb: 0x0c234e)
+            , NSFontAttributeName: UIFont.systemFont(ofSize: 17)]
+        customizeLabel.attributedText = NSMutableAttributedString(string: R.string.localizable.delete()
+            , attributes: attributes
+        )
+        customizeLabel.textAlignment = .center
+        customizeLabel.numberOfLines = 0
+        
+        MessageBoxView.showViewAddedTo(self.view
+            , animated: true
+            , customizeView: customizeLabel
+            , buttons: [confirmItem, cancelItem]
+        )
     }
     
     @IBAction func moreClick(sender: UIButton) {
