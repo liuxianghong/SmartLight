@@ -29,6 +29,8 @@
 		D306A1C11EA731BC00CD960E /* DeviceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C01EA731BC00CD960E /* DeviceManager.swift */; };
 		D306A1C31EA731DE00CD960E /* DeviceSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C21EA731DE00CD960E /* DeviceSession.swift */; };
 		D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D306A1C51EA7322E00CD960E /* HomeViewModel.swift */; };
+		D308E6471EADDF8A00772EEE /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E6461EADDF8A00772EEE /* ServerApi.swift */; };
+		D308E6491EADDF9400772EEE /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E6481EADDF9400772EEE /* ServerModel.swift */; };
 		D30C9F831EA8724400836DE9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C9F821EA8724400836DE9 /* LoadingView.swift */; };
 		D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */; };
 		D320F09D1EA1065900892CFF /* CSRmesh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D320F09C1EA1065900892CFF /* CSRmesh.framework */; };
@@ -133,6 +135,8 @@
 		D306A1C01EA731BC00CD960E /* DeviceManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceManager.swift; sourceTree = "<group>"; };
 		D306A1C21EA731DE00CD960E /* DeviceSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSession.swift; sourceTree = "<group>"; };
 		D306A1C51EA7322E00CD960E /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		D308E6461EADDF8A00772EEE /* ServerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
+		D308E6481EADDF9400772EEE /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
 		D30C9F821EA8724400836DE9 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
 		D320F09C1EA1065900892CFF /* CSRmesh.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CSRmesh.framework; path = SmartLight/Frameworks/CSRmesh.framework; sourceTree = "<group>"; };
@@ -346,6 +350,7 @@
 				D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */,
 				D306A1C01EA731BC00CD960E /* DeviceManager.swift */,
 				D306A1C21EA731DE00CD960E /* DeviceSession.swift */,
+				D308E6461EADDF8A00772EEE /* ServerApi.swift */,
 			);
 			path = Api;
 			sourceTree = "<group>";
@@ -354,6 +359,7 @@
 			isa = PBXGroup;
 			children = (
 				D304DEF81EA460BE009B7091 /* ModelDefine.swift */,
+				D308E6481EADDF9400772EEE /* ServerModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -607,6 +613,7 @@
 				D36C3B9D1E9C86B700708706 /* OCSupportUtil.m in Sources */,
 				D3FBC9381E9CE1FB00929E81 /* MoreViewController.swift in Sources */,
 				D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */,
+				D308E6491EADDF9400772EEE /* ServerModel.swift in Sources */,
 				D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */,
 				D3D6A13B1E9FBC9800242EB9 /* BLEManager.swift in Sources */,
 				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,
@@ -622,6 +629,7 @@
 				D36C3B831E9C86B700708706 /* DeviceSize.swift in Sources */,
 				D36C3B8F1E9C86B700708706 /* RadialGradientView.swift in Sources */,
 				D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */,
+				D308E6471EADDF8A00772EEE /* ServerApi.swift in Sources */,
 				D36C3B911E9C86B700708706 /* ScrollLabel.swift in Sources */,
 				D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */,
 				D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */,

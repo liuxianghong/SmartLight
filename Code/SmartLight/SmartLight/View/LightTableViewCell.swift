@@ -26,6 +26,7 @@ class LightTableViewCell: UITableViewCell {
     
     fileprivate var checkTimer: Timer?
     
+    
     var cellModel: DeviceCellModel? {
         didSet {
             guard let cellModel = cellModel else {
@@ -104,6 +105,12 @@ class LightTableViewCell: UITableViewCell {
         switch cellModel.controlType {
         case .brightness:
             setSliderImage(image: (cellModel.device.linkState == .linked) ? R.image.barN() : R.image.linking())
+            slider.minimumTrackTintColor = UIColor(red: 43 / 255.0, green: 174 / 255.0, blue: 220 / 255.0, alpha: 1)
+            slider.maximumTrackTintColor = UIColor.lightGray
+        case .clolorTemp:
+            setSliderImage(image: R.image.linking())
+            slider.minimumTrackTintColor = UIColor.yellow
+            slider.maximumTrackTintColor = UIColor.white
         default:
             break
         }
@@ -153,12 +160,13 @@ class LightTableViewCell: UITableViewCell {
             rightButton.setBackgroundImage(R.image.colorTemperature(), for: .normal)
             rightNameLabel.text = R.string.localizable.brightness()
             rightNameLabel.isHidden = false
+            colorImageView.isHidden = false
         case .delay:
             rightButton.isHidden = true
             minvalueLabel.isHidden = false
             maxvalueLabel.isHidden = false
             currentvalueLabel.isHidden = false
-            minvalueLabel.text = "1"
+            minvalueLabel.text = "0"
             maxvalueLabel.text = "90"
         case .delete:
             rightButton.setBackgroundImage(R.image.delete(), for: .normal)
@@ -196,7 +204,7 @@ class LightTableViewCell: UITableViewCell {
         if cellModel.controlType != .delay {
             self.cellModel?.controlType = .delay
             updateUI()
-            startTimer()
+            sliderClick()
         }
     }
     
@@ -211,7 +219,7 @@ class LightTableViewCell: UITableViewCell {
         default:
             self.cellModel?.controlType = .timer
             updateUI()
-            startTimer()
+            sliderClick()
         }
     }
 
@@ -238,12 +246,6 @@ class LightTableViewCell: UITableViewCell {
             return
         }
         
-        cellModel.device.color = UIColor(red: 0.3, green: 0.1, blue: 0.1, alpha: 0.2)
-        cellModel.device.level = 255
-        DeviceSession.request(cellModel.device, command: .color) { (error, device) in
-            print(error)
-        }
-        
         switch cellModel.controlType {
         case .timer:
             self.cellModel?.controlType = .brightness
@@ -255,7 +257,7 @@ class LightTableViewCell: UITableViewCell {
             updateRightButton()
             updateSlider()
         case .clolorTemp:
-            self.cellModel?.controlType = .color
+            self.cellModel?.controlType = .brightness
             updateRightButton()
             updateSlider()
         case .color:
@@ -270,6 +272,8 @@ class LightTableViewCell: UITableViewCell {
         default:
             break
         }
+        
+        sliderClick()
     }
     
     @IBAction func sliderClick() {
@@ -278,7 +282,7 @@ class LightTableViewCell: UITableViewCell {
             return
         }
         switch cellModel.controlType {
-        case .delay, .timer:
+        case .delay, .timer, .clolorTemp:
             startTimer()
         default:
             break
@@ -300,6 +304,12 @@ class LightTableViewCell: UITableViewCell {
         cellModel.device.level = UInt8(slider.value)
         DeviceSession.request(cellModel.device, command: .level) { (error, device) in
             //DDLogDebug("level: \(device?.level)")
+        }
+        
+        cellModel.device.color = UIColor(red: 0.3, green: 0.1, blue: 0.1, alpha: 0.2)
+        cellModel.device.level = 255
+        DeviceSession.request(cellModel.device, command: .color) { (error, device) in
+            print(error)
         }
     }
     
