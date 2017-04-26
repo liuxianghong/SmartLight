@@ -1,8 +1,8 @@
 //
-//  HomeViewModel.swift
+//  EditeViewModel.swift
 //  SmartLight
 //
-//  Created by 刘向宏 on 2017/4/17.
+//  Created by 刘向宏 on 2017/4/26.
 //  Copyright © 2017年 刘向宏. All rights reserved.
 //
 
@@ -10,53 +10,25 @@ import UIKit
 import RxSwift
 import RxCocoa
 import RxDataSources
+import RealmSwift
 
-enum HomeViewType {
-    case `default`
-    case delete
-    case edite
-}
+class EditeViewModel: UITableViewCell {
 
-class HomeViewModel {
-    
     fileprivate let bag: DisposeBag = DisposeBag()
     
     fileprivate weak var tableView: UITableView?
     
-    fileprivate var deviceCells = [DeviceCellModel]()
+    fileprivate var deviceCells = [EditeLightCellViewModel]()
     
-    fileprivate let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, DeviceCellModel>>()
-    
-    var viewType = HomeViewType.default {
-        didSet {
-            guard oldValue != viewType else {
-                return
-            }
-            reload()
-        }
-    }
+    fileprivate let dataSource = RxTableViewSectionedReloadDataSource<SectionModel<String, EditeLightCellViewModel>>()
     
     fileprivate func reloadDevices() {
         deviceCells.removeAll()
         let devices = DeviceManager.shareManager.bleDevices
         for item in devices {
-            var model = DeviceCellModel(device: item)
-            switch viewType {
-            case .default:
-                model.controlType = .brightness
-            case .edite:
-                model.controlType = .edite
-            case .delete:
-                model.controlType = .delete
-            }
+            let model = EditeLightCellViewModel(device: item)
             deviceCells.append(model)
         }
-    }
-    
-    func reload() {
-        reloadDevices()
-        let sections = [SectionModel(model: "", items: self.deviceCells)]
-        dataSource.tableView(self.tableView!, observedEvent: Event.next(sections))
     }
     
     func setTableView(tableView: UITableView) {
@@ -64,11 +36,11 @@ class HomeViewModel {
         self.tableView = tableView
         dataSource.configureCell = {
             section, tableView, indexPath, _ in
-            let cell = tableView.dequeueReusableCell(withIdentifier: LightTableViewCell.reuseIdentifier, for: indexPath) as! LightTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: EditeLightTableViewCell.reuseIdentifier, for: indexPath) as! EditeLightTableViewCell
             cell.tag = indexPath.row
             
             let model = section.sectionModels[indexPath.section].items[indexPath.row]
-            cell.cellModel = model
+            cell.viewModel = model
             
             return cell
         }
@@ -80,7 +52,7 @@ class HomeViewModel {
         }).addDisposableTo(bag)
     }
     
-    fileprivate func getModels() -> Observable<[SectionModel<String, DeviceCellModel>]> {
+    fileprivate func getModels() -> Observable<[SectionModel<String, EditeLightCellViewModel>]> {
         return Observable.create { (observer) -> Disposable in
             let sections = [SectionModel(model: "", items: self.deviceCells)]
             observer.onNext(sections)
@@ -88,4 +60,14 @@ class HomeViewModel {
             return Disposables.create {}
         }
     }
+    
+    func save() {
+        guard let realm = try? Realm() else {return}
+        try? realm.write {
+            for devic in deviceCells {
+                devic.updateName(devic.username.value)
+            }
+        }
+    }
+
 }
