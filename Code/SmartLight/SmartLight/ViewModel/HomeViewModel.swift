@@ -11,12 +11,6 @@ import RxSwift
 import RxCocoa
 import RxDataSources
 
-enum HomeViewType {
-    case `default`
-    case delete
-    case edite
-}
-
 class HomeViewModel {
     
     fileprivate let bag: DisposeBag = DisposeBag()

@@ -10,30 +10,6 @@ import UIKit
 import RxSwift
 import RxCocoa
 
-
-class EditeLightCellViewModel {
-    
-    let username = Variable<String>("")
-    fileprivate let disposeBag = DisposeBag()
-    
-    var device: BLEDevice!
-    
-    init(device: BLEDevice) {
-        self.device = device
-        username.value = device.name ?? ""
-        username.asObservable().subscribe(onNext: { (text) in
-            //self.updateName(text)
-        }).addDisposableTo(disposeBag)
-    }
-    
-    func updateName(_ name: String) {
-        guard !name.isEmpty && name != device.name else {
-            return
-        }
-        device.name = name
-    }
-}
-
 class EditeLightTableViewCell: UITableViewCell {
 
     static let reuseIdentifier = "EditeLightCellReuseIdentifier"

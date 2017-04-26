@@ -46,6 +46,35 @@ enum DeviceControlType {
     case color
 }
 
+enum HomeViewType {
+    case `default`
+    case delete
+    case edite
+}
+
+class EditeLightCellViewModel {
+    
+    let username = Variable<String>("")
+    fileprivate let disposeBag = DisposeBag()
+    
+    var device: BLEDevice!
+    
+    init(device: BLEDevice) {
+        self.device = device
+        username.value = device.name ?? ""
+        username.asObservable().subscribe(onNext: { (text) in
+            //self.updateName(text)
+        }).addDisposableTo(disposeBag)
+    }
+    
+    func updateName(_ name: String) {
+        guard !name.isEmpty && name != device.name else {
+            return
+        }
+        device.name = name
+    }
+}
+
 class BaseViewModel: NSObject {
     let disposeBag = DisposeBag()
     var refreshStatus = Variable.init(RefreshStatus.InvalidData)
