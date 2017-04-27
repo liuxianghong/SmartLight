@@ -32,6 +32,9 @@
 		D308E6471EADDF8A00772EEE /* ServerApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E6461EADDF8A00772EEE /* ServerApi.swift */; };
 		D308E6491EADDF9400772EEE /* ServerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D308E6481EADDF9400772EEE /* ServerModel.swift */; };
 		D30C9F831EA8724400836DE9 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30C9F821EA8724400836DE9 /* LoadingView.swift */; };
+		D30D938F1EB21D7B00011217 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D938E1EB21D7B00011217 /* LoginViewController.swift */; };
+		D30D93911EB2397D00011217 /* RegistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D93901EB2397D00011217 /* RegistViewController.swift */; };
+		D30D93931EB2398B00011217 /* ForgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30D93921EB2398B00011217 /* ForgetViewController.swift */; };
 		D30FF9DD1EA5C8F60048E3D4 /* BLEDevice.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */; };
 		D32063A81EB08215004CC693 /* EditeDviceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32063A71EB08215004CC693 /* EditeDviceViewController.swift */; };
 		D32063AA1EB08375004CC693 /* EditeLightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32063A91EB08375004CC693 /* EditeLightTableViewCell.swift */; };
@@ -141,6 +144,9 @@
 		D308E6461EADDF8A00772EEE /* ServerApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerApi.swift; sourceTree = "<group>"; };
 		D308E6481EADDF9400772EEE /* ServerModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServerModel.swift; sourceTree = "<group>"; };
 		D30C9F821EA8724400836DE9 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		D30D938E1EB21D7B00011217 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		D30D93901EB2397D00011217 /* RegistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistViewController.swift; sourceTree = "<group>"; };
+		D30D93921EB2398B00011217 /* ForgetViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgetViewController.swift; sourceTree = "<group>"; };
 		D30FF9DC1EA5C8F60048E3D4 /* BLEDevice.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEDevice.swift; sourceTree = "<group>"; };
 		D32063A71EB08215004CC693 /* EditeDviceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditeDviceViewController.swift; sourceTree = "<group>"; };
 		D32063A91EB08375004CC693 /* EditeLightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditeLightTableViewCell.swift; sourceTree = "<group>"; };
@@ -392,6 +398,9 @@
 				D304DEFE1EA478EE009B7091 /* AboutViewController.swift */,
 				D304DF001EA4ADBD009B7091 /* AddDeviceViewController.swift */,
 				D32063A71EB08215004CC693 /* EditeDviceViewController.swift */,
+				D30D938E1EB21D7B00011217 /* LoginViewController.swift */,
+				D30D93901EB2397D00011217 /* RegistViewController.swift */,
+				D30D93921EB2398B00011217 /* ForgetViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -627,9 +636,11 @@
 				D308E6491EADDF9400772EEE /* ServerModel.swift in Sources */,
 				D36C3B881E9C86B700708706 /* UIView+Border.swift in Sources */,
 				D3D6A13B1E9FBC9800242EB9 /* BLEManager.swift in Sources */,
+				D30D93931EB2398B00011217 /* ForgetViewController.swift in Sources */,
 				D36C3B931E9C86B700708706 /* ToastView.swift in Sources */,
 				D36C3B861E9C86B700708706 /* UIDevice+Extension.swift in Sources */,
 				D304DEFF1EA478EE009B7091 /* AboutViewController.swift in Sources */,
+				D30D93911EB2397D00011217 /* RegistViewController.swift in Sources */,
 				D30C9F831EA8724400836DE9 /* LoadingView.swift in Sources */,
 				D36C3B921E9C86B700708706 /* SwitchButton.swift in Sources */,
 				D306A1C61EA7322E00CD960E /* HomeViewModel.swift in Sources */,
@@ -642,6 +653,7 @@
 				D3FBC9361E9CC18800929E81 /* MainViewController.swift in Sources */,
 				D308E6471EADDF8A00772EEE /* ServerApi.swift in Sources */,
 				D32063AC1EB08F5B004CC693 /* EditeViewModel.swift in Sources */,
+				D30D938F1EB21D7B00011217 /* LoginViewController.swift in Sources */,
 				D36C3B911E9C86B700708706 /* ScrollLabel.swift in Sources */,
 				D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */,
 				D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */,

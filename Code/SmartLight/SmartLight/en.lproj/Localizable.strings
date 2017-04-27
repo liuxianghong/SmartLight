@@ -24,3 +24,10 @@
 "color Temperature" = "Color Temperature";
 "timer" = "Timer";
 "brightness" = "Brightness";
+
+"login-inputEmail" = "please input email";
+"login-inputPassword" = "please input password";
+"login-loginfaile" = "login failure";
+"login-login" = "login";
+"login-forget" = "forget password";
+"login-regist" = "regist";

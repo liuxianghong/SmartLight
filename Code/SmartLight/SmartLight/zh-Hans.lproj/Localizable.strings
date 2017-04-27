@@ -24,3 +24,10 @@
 "color Temperature" = "色温";
 "timer" = "定时";
 "brightness" = "亮度";
+
+"login-inputEmail" = "请输入邮箱账号";
+"login-inputPassword" = "请输入密码";
+"login-loginfaile" = "登录失败";
+"login-login" = "登录";
+"login-forget" = "忘记密码";
+"login-regist" = "注册";

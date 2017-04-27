@@ -38,6 +38,8 @@ class HomeViewController: UIViewController {
         
         tableView.tableFooterView = UIView()
         viewModel.setTableView(tableView: tableView)
+        
+        self.performSegue(withIdentifier: "login", sender: nil)
     }
 
     override func didReceiveMemoryWarning() {
