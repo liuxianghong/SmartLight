@@ -31,3 +31,12 @@
 "login-login" = "login";
 "login-forget" = "forget password";
 "login-regist" = "regist";
+"login-haveAcount" = "Have an account";
+"login-joinus" = "join us";
+"login-protocol-des" = "Once registered, it means that you agree to our Smart Bulb Use Regulations and have read the privacy policy in detail, including the use of smart bulbs. You may receive a notification of a newsletter sent by a smart light and may opt out at any time.";
+"login-code" = "Verification code";
+"login-sendCode" = "send";
+"login-reSendCode" = "Resend";
+
+"login-inputCode" = "please input Verification code";
+"login-faile" = "operation failed";

@@ -27,7 +27,7 @@ class ServerApi: NSObject {
             , "loginName": loginName
             , "password": password.md5String()
             , "platform": 2
-            , "userSource": 1]
+            , "userSource": 2]
         ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/user/login", parameters: param) { (result) in
             let model = ServerLoginResult()
             model.modelSet(withJSON: result ?? "")
@@ -40,7 +40,7 @@ class ServerApi: NSObject {
             , "loginName": loginName
             , "password": password.md5String()
             , "platform": 2
-            , "userSource": 1
+            , "userSource": 2
             , "captcha": captcha
             , "appPackageName": "com.smart.light"
             , "operateType": 1]

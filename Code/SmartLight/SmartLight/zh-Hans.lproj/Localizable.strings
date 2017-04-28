@@ -31,3 +31,12 @@
 "login-login" = "登录";
 "login-forget" = "忘记密码";
 "login-regist" = "注册";
+"login-haveAcount" = "已有账号";
+"login-joinus" = "加入我们";
+"login-protocol-des" = "一旦注册，就表示你同意我们智能灯泡使用条例，并已详细阅读隐私政策，包括智能灯泡的使用。你可能会收到智能灯传送的简讯通知，并可随时选择退出。";
+"login-code" = "验证码";
+"login-sendCode" = "发送验证码";
+"login-reSendCode" = "重新发送";
+
+"login-inputCode" = "请输入验证码";
+"login-faile" = "操作失败";

@@ -61,6 +61,7 @@
 		D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */; };
 		D36C3BA01E9C86B700708706 /* TimeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3B821E9C86B700708706 /* TimeUtil.swift */; };
 		D36C3BA21E9C8BD600708706 /* SizeUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C3BA11E9C8BD600708706 /* SizeUtil.swift */; };
+		D38A94D61EB33AD000419E0D /* RegistProtocolViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D38A94D51EB33AD000419E0D /* RegistProtocolViewController.swift */; };
 		D3D6A13B1E9FBC9800242EB9 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */; };
 		D3D988A11E9F5B5900186793 /* LightTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */; };
 		D3E676821E9CA8D1004ED0D5 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */; };
@@ -176,6 +177,7 @@
 		D36C3B811E9C86B700708706 /* SwiftSupportUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftSupportUtil.swift; sourceTree = "<group>"; };
 		D36C3B821E9C86B700708706 /* TimeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeUtil.swift; sourceTree = "<group>"; };
 		D36C3BA11E9C8BD600708706 /* SizeUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SizeUtil.swift; sourceTree = "<group>"; };
+		D38A94D51EB33AD000419E0D /* RegistProtocolViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegistProtocolViewController.swift; sourceTree = "<group>"; };
 		D3D6A13A1E9FBC9800242EB9 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
 		D3D988A01E9F5B5900186793 /* LightTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LightTableViewCell.swift; sourceTree = "<group>"; };
 		D3E676811E9CA8D1004ED0D5 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -401,6 +403,7 @@
 				D30D938E1EB21D7B00011217 /* LoginViewController.swift */,
 				D30D93901EB2397D00011217 /* RegistViewController.swift */,
 				D30D93921EB2398B00011217 /* ForgetViewController.swift */,
+				D38A94D51EB33AD000419E0D /* RegistProtocolViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -658,6 +661,7 @@
 				D305B1EB1E9B888A00443530 /* R.generated.swift in Sources */,
 				D36C3B8D1E9C86B700708706 /* MessageBoxView.swift in Sources */,
 				D34046691E9F733C003EB0AA /* SideTableViewCell.swift in Sources */,
+				D38A94D61EB33AD000419E0D /* RegistProtocolViewController.swift in Sources */,
 				D36C3B9F1E9C86B700708706 /* SwiftSupportUtil.swift in Sources */,
 				D36C3B841E9C86B700708706 /* RangeReplaceableCollectionType+RemoveObject.swift in Sources */,
 				D36C3B8E1E9C86B700708706 /* PenetrateView.swift in Sources */,

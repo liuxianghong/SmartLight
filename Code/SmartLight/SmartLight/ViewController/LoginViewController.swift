@@ -25,11 +25,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         pwTF.placeholder = R.string.localizable.loginInputPassword()
         loginButton.setTitle(R.string.localizable.loginLogin(), for: UIControlState.normal)
         
-        let forget = R.string.localizable.loginForget()
+        let forget = R.string.localizable.loginRegist()
         let str = NSMutableAttributedString(string: forget)
         str.addAttributes([NSUnderlineStyleAttributeName: 1, NSForegroundColorAttributeName: UIColor.darkText], range: NSRange(location: 0, length: forget.lengthOfBytes(using: String.Encoding.utf8)))
-        forgetButton.setAttributedTitle(str, for: UIControlState.normal)
-        registButton.setTitle(R.string.localizable.loginRegist(), for: UIControlState.normal)
+        registButton.setAttributedTitle(str, for: UIControlState.normal)
+        forgetButton.setTitle(R.string.localizable.loginForget(), for: UIControlState.normal)
     }
 
     override func didReceiveMemoryWarning() {
