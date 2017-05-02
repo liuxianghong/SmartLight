@@ -27,7 +27,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let forget = R.string.localizable.loginRegist()
         let str = NSMutableAttributedString(string: forget)
-        str.addAttributes([NSUnderlineStyleAttributeName: 1, NSForegroundColorAttributeName: UIColor.darkText], range: NSRange(location: 0, length: forget.lengthOfBytes(using: String.Encoding.utf8)))
+        
+        str.addAttributes([NSUnderlineStyleAttributeName: 1, NSForegroundColorAttributeName: UIColor.darkText], range: NSRange(location: 0, length: (forget as NSString).length))
         registButton.setAttributedTitle(str, for: UIControlState.normal)
         forgetButton.setTitle(R.string.localizable.loginForget(), for: UIControlState.normal)
     }

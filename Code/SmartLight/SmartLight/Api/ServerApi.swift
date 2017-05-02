@@ -14,7 +14,8 @@ class ServerApi: NSObject {
     
     class func getCaptcha(mobile: String, complet: @escaping ((ServerResult) -> ())) {
         let param = ["version": "1.0.0"
-            , "mobile": mobile]
+            , "email": mobile
+            , "userSource": "2"]
         ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/user/getCaptcha", parameters: param) { (result) in
             let model = ServerResult()
             model.modelSet(withJSON: result ?? "")
