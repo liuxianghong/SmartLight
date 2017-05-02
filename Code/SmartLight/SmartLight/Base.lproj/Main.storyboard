@@ -434,7 +434,7 @@
                         <outlet property="moreView" destination="nJF-gs-5mm" id="pbE-yn-F3h"/>
                         <outlet property="switchButton" destination="Rc9-OO-SV7" id="6Tw-1I-2bd"/>
                         <outlet property="tableView" destination="klA-Fl-gMj" id="J2S-dz-lpP"/>
-                        <segue destination="cer-gu-mzo" kind="show" identifier="login" id="IDc-DY-M6r"/>
+                        <segue destination="cer-gu-mzo" kind="show" identifier="login" animates="NO" id="IDc-DY-M6r"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="opz-eF-RaA" userLabel="First Responder" sceneMemberID="firstResponder"/>
