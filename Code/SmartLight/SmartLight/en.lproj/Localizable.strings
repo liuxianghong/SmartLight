@@ -40,3 +40,5 @@
 
 "login-inputCode" = "please input Verification code";
 "login-faile" = "operation failed";
+
+"OK" = "OK";

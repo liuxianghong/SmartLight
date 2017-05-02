@@ -59,6 +59,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         ServerApi.login(loginName: name, password: pw) { (reslut) in
             if let retCode = reslut.retCode, retCode == "0" {
                 hud.hide(animated: true)
+                ServerApi.userId = reslut.userId
+                ServerApi.token = reslut.token
                 self.navigationController?.popViewController(animated: true)
             } else {
                 hud.mode = .text

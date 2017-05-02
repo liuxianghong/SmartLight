@@ -12,6 +12,9 @@ import YYKit
 
 class ServerApi: NSObject {
     
+    static var userId: String?
+    static var token:String?
+    
     class func getCaptcha(mobile: String, complet: @escaping ((ServerResult) -> ())) {
         let param = ["version": "1.0.0"
             , "email": mobile
@@ -45,6 +48,22 @@ class ServerApi: NSObject {
             , "captcha": captcha
             , "appPackageName": "com.smart.light"
             , "operateType": 1]
+        ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/user/regist", parameters: param) { (result) in
+            let model = ServerLoginResult()
+            model.modelSet(withJSON: result ?? "")
+            complet(model)
+        }
+    }
+    
+    class func forget(loginName: String, password: String, captcha: String, complet: @escaping ((ServerLoginResult) -> ())) {
+        let param: [String : Any] = ["version": "1.0.0"
+            , "loginName": loginName
+            , "password": password.md5String()
+            , "platform": 2
+            , "userSource": 2
+            , "captcha": captcha
+            , "appPackageName": "com.smart.light"
+            , "operateType": 2]
         ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/user/regist", parameters: param) { (result) in
             let model = ServerLoginResult()
             model.modelSet(withJSON: result ?? "")

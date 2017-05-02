@@ -40,3 +40,5 @@
 
 "login-inputCode" = "请输入验证码";
 "login-faile" = "操作失败";
+
+"OK" = "确定";
