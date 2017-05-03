@@ -15,6 +15,8 @@ class DeviceManager {
     
     fileprivate var bleDevicesIn = [BLEDevice]()
     
+    fileprivate var nameDic = [Int: String]()
+    
     var bleDevices: [BLEDevice] {
         return bleDevicesIn
     }
@@ -72,6 +74,11 @@ class DeviceManager {
                 bleDevicesIn.remove(at: index)
             }
         }
-        
+    }
+    
+    func updateAppearance(_ deviceHash: Data!, appearanceValue: Data!, shortName: Data!) {
+        if let name = String(data: shortName, encoding: String.Encoding.utf8) {
+            nameDic[deviceHash.hashValue] = name
+        }
     }
 }

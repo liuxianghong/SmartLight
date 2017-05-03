@@ -31,6 +31,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         str.addAttributes([NSUnderlineStyleAttributeName: 1, NSForegroundColorAttributeName: UIColor.darkText], range: NSRange(location: 0, length: (forget as NSString).length))
         registButton.setAttributedTitle(str, for: UIControlState.normal)
         forgetButton.setTitle(R.string.localizable.loginForget(), for: UIControlState.normal)
+        
+        nameTF.text = "178483623@qq.com"
+        pwTF.text = "111"
     }
 
     override func didReceiveMemoryWarning() {

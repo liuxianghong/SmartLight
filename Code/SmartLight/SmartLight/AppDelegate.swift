@@ -34,16 +34,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // 告诉 Realm 为默认的 Realm 数据库使用这个新的配置对象
         Realm.Configuration.defaultConfiguration = config
         
-//        for index in 1...100 {
-//            let devcie = BLEDevice()
-//            devcie.deviceId = 32771 + index
-//            devcie.uuid = "BDBCB373-E363-890F-A101-F5B094368242"
-//            // 获取默认的 Realm 数据库
-//            let realm = try! Realm()
-//            try! realm.write {
-//                realm.add(devcie, update: true)
-//            }
-//        }
+        for index in 1...2 {
+            let devcie = BLEDevice()
+            devcie.deviceId = 32771 + index
+            devcie.uuid = "BDBCB373-E363-890F-A101-F5B094368242"
+            // 获取默认的 Realm 数据库
+            let realm = try! Realm()
+            try! realm.write {
+                realm.add(devcie, update: true)
+            }
+        }
         
         let fileLogger = DDFileLogger(logFileManager: DDLogFileManagerDefault())!
         fileLogger.maximumFileSize = 10 * 1024 * 1024

@@ -22,4 +22,18 @@ extension UIImage {
         return image
     }
     
+    func getPixelColor(pos:CGPoint) -> UIColor {
+        let pixelData = self.cgImage?.dataProvider?.data
+        let data = CFDataGetBytePtr(pixelData)!
+        let pixelInfo = ((Int(self.size.width) * Int(pos.y)) + Int(pos.x)) * 4
+        
+        let red = CGFloat(data[pixelInfo]) / 255
+        let green = CGFloat(data[pixelInfo + 1]) / 255
+        let blue = CGFloat(data[pixelInfo + 2]) / 255
+        let alpha = CGFloat(data[pixelInfo + 3]) / 255
+        
+        let color = UIColor(red: red, green: green, blue: blue, alpha: alpha)
+        return color
+    }
+    
 }

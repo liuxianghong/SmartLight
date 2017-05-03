@@ -18,6 +18,8 @@ class EditeLightTableViewCell: UITableViewCell {
     @IBOutlet var leftButton: UIButton!
     @IBOutlet var nameTF: UITextField!
     
+    
+    
     fileprivate var subscription: Disposable?
     
     var viewModel: EditeLightCellViewModel? {
@@ -36,6 +38,7 @@ class EditeLightTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {

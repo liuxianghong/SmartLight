@@ -24,6 +24,8 @@ class LightTableViewCell: UITableViewCell {
     @IBOutlet var currentvalueLabel: UILabel!
     @IBOutlet var rightNameLabel: UILabel!
     
+    @IBOutlet var colorImageBack: UIImageView!
+    
     fileprivate var checkTimer: Timer?
     
     
@@ -69,6 +71,8 @@ class LightTableViewCell: UITableViewCell {
         longPressRight.minimumPressDuration = 2
         rightButton.addGestureRecognizer(longPressRight)
         rightButton.isUserInteractionEnabled = true
+        
+        colorImageBack.isHidden = true
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -102,6 +106,7 @@ class LightTableViewCell: UITableViewCell {
             return
         }
         slider.isHidden = cellModel.controlType == .edite
+        colorImageBack.isHidden = cellModel.controlType != .color
         switch cellModel.controlType {
         case .brightness:
             setSliderImage(image: (cellModel.device.linkState == .linked) ? R.image.barN() : R.image.linking())
@@ -111,6 +116,10 @@ class LightTableViewCell: UITableViewCell {
             setSliderImage(image: R.image.linking())
             slider.minimumTrackTintColor = UIColor.yellow
             slider.maximumTrackTintColor = UIColor.white
+        case .color:
+            setSliderImage(image: R.image.colorTrack())
+            slider.minimumTrackTintColor = UIColor.clear
+            slider.maximumTrackTintColor = UIColor.clear
         default:
             break
         }
@@ -257,7 +266,7 @@ class LightTableViewCell: UITableViewCell {
             updateRightButton()
             updateSlider()
         case .clolorTemp:
-            self.cellModel?.controlType = .brightness
+            self.cellModel?.controlType = .color
             updateRightButton()
             updateSlider()
         case .color:
@@ -282,8 +291,12 @@ class LightTableViewCell: UITableViewCell {
             return
         }
         switch cellModel.controlType {
-        case .delay, .timer, .clolorTemp:
-            startTimer()
+        case .delay, .timer, .clolorTemp, .color:
+            stopTimer()
+            let width = R.image.colorSlider()!.size.width * R.image.colorSlider()!.scale
+            let color = colorImageBack.image?.getPixelColor(pos: CGPoint(x: width / 255 * CGFloat(slider.value), y: 2))
+            print(color?.red,color?.green,color?.blue)
+            //startTimer()
         default:
             break
         }

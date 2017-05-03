@@ -29,7 +29,7 @@ class BLEManager: NSObject {
     static let bleQueue = DispatchQueue(label: "bleQueue", attributes: [])
     
     fileprivate var manager: CBCentralManager!
-    fileprivate var cperipheral: CBPeripheral?
+    fileprivate var peripherals = [CBPeripheral]()
     
     fileprivate let meshServiceApi = MeshServiceApi.sharedInstance() as! MeshServiceApi
     fileprivate let powerModelApi = PowerModelApi.sharedInstance() as! PowerModelApi
@@ -41,6 +41,7 @@ class BLEManager: NSObject {
         super.init()
         manager = CBCentralManager(delegate: self, queue: DispatchQueue.main)
         meshServiceApi.setCentralManager(manager)
+        meshServiceApi.setNetworkPassPhrase("2017")
         meshServiceApi.meshServiceApiDelegate = self
         
         powerModelApi.powerModelApiDelegate = self
@@ -94,6 +95,7 @@ extension BLEManager: MeshServiceApiDelegate {
     func didUpdateAppearance(_ deviceHash: Data!, appearanceValue: Data!, shortName: Data!) {
         let msg:[String : Any] = ["cmd": NoticeCmd.appearanceating, "deviceHash": deviceHash, "appearanceValue": appearanceValue, "shortName": shortName]
         broadcastMessage(msg)
+        DeviceManager.shareManager.updateAppearance(deviceHash, appearanceValue: appearanceValue, shortName: shortName)
     }
     
     func didTimeoutMessage(_ meshRequestId: NSNumber!) {
@@ -129,8 +131,8 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
         
         peripheral.delegate = self
         
-        if r == 1 && cperipheral == nil {
-            cperipheral = peripheral
+        if r == 1 && !peripherals.contains(peripheral) {
+            peripherals.append(peripheral)
             central.connect(peripheral, options: [CBConnectPeripheralOptionNotifyOnConnectionKey: true])
         }
         
@@ -143,6 +145,7 @@ extension BLEManager: CBCentralManagerDelegate, CBPeripheralDelegate {
     
     func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         meshServiceApi.disconnectBridge(peripheral)
+        peripherals.removeObject(peripheral)
     }
     
     func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
