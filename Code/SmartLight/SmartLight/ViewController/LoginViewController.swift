@@ -61,10 +61,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         ServerApi.login(loginName: name, password: pw) { (reslut) in
             if let retCode = reslut.retCode, retCode == "0" {
-                hud.hide(animated: true)
                 ServerApi.userId = reslut.userId
                 ServerApi.token = reslut.token
-                self.navigationController?.popViewController(animated: true)
+                DeviceManager.shareManager.userId = reslut.userId
+                ServerApi.getHomeDeviceList(complet: { (reslut) in
+                    if let retCode = reslut.retCode, retCode == "0" {
+                        DeviceManager.shareManager.updateDeviceList(reslut.deviceList)
+                        hud.hide(animated: true)
+                        self.navigationController?.popViewController(animated: true)
+                    } else {
+                        hud.mode = .text
+                        hud.label.text = reslut.retMsg ?? R.string.localizable.loginLoginfaile()
+                        hud.hide(animated: true, afterDelay: 1.5)
+                    }
+                })
             } else {
                 hud.mode = .text
                 hud.label.text = reslut.retMsg ?? R.string.localizable.loginLoginfaile()

@@ -38,6 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let devcie = BLEDevice()
             devcie.deviceId = 32771 + index
             devcie.uuid = "BDBCB373-E363-890F-A101-F5B094368242"
+            devcie.userId = "60691"
             // 获取默认的 Realm 数据库
             let realm = try! Realm()
             try! realm.write {

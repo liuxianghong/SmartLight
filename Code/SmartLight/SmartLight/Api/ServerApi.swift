@@ -71,10 +71,10 @@ class ServerApi: NSObject {
         }
     }
     
-    class func getHomeDeviceList(userId: String, token: String, complet: @escaping ((ServerHomeDeviceResult) -> ())) {
+    class func getHomeDeviceList(complet: @escaping ((ServerHomeDeviceResult) -> ())) {
         let param: [String : Any] = ["version": "1.0.0"
-            , "userId": userId
-            , "token": token
+            , "userId": ServerApi.userId!
+            , "token": ServerApi.token!
             , "homeId": "0"
             , "pageNo": 1
             , "pageSize": 10000]
@@ -87,15 +87,15 @@ class ServerApi: NSObject {
         }
     }
     
-    class func addSmartLamp(userId: String, token: String,devices: [(String, String)], complet: @escaping ((ServerResult) -> ())) {
+    class func addSmartLamp(devices: [(String, String)], complet: @escaping ((ServerResult) -> ())) {
     
         var list = [[String: String]]()
         for device in devices {
             list.append(["deviceName": device.0, "hardwareId": device.1])
         }
         let param: [String : Any] = ["version": "1.0.0"
-            , "userId": userId
-            , "token": token
+            , "userId": ServerApi.userId!
+            , "token": ServerApi.token!
             , "homeId": "0"
             , "deviceList": list]
         ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/smartHome/addSmartLamp", parameters: param) { (result) in

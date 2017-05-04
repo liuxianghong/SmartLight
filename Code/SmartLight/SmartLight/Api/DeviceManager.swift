@@ -17,6 +17,17 @@ class DeviceManager {
     
     fileprivate var nameDic = [Int: String]()
     
+    var userId: String? {
+        didSet {
+            guard oldValue != userId else {
+                return
+            }
+            bleDevicesIn = loadAllDevices()
+        }
+    }
+    
+    var token: String?
+    
     var bleDevices: [BLEDevice] {
         return bleDevicesIn
     }
@@ -32,7 +43,6 @@ class DeviceManager {
                     device.linkState = .unlink
                 }
             }
-            
         }
     }
     
@@ -42,7 +52,7 @@ class DeviceManager {
     
     fileprivate func loadAllDevices() -> [BLEDevice] {
         let realm = try! Realm()
-        let devices = realm.objects(BLEDevice.self)
+        let devices = realm.objects(BLEDevice.self).filter("userId = '\(userId ?? "0")'")
         var resluts = [BLEDevice]()
         for device in devices {
             resluts.append(device)
@@ -79,6 +89,12 @@ class DeviceManager {
     func updateAppearance(_ deviceHash: Data!, appearanceValue: Data!, shortName: Data!) {
         if let name = String(data: shortName, encoding: String.Encoding.utf8) {
             nameDic[deviceHash.hashValue] = name
+        }
+    }
+    
+    func updateDeviceList(_ list: [ServerHomeLampResult]?) {
+        guard let list = list else {
+            return
         }
     }
 }

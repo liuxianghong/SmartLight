@@ -19,6 +19,7 @@ class BLEDevice: Object {
     dynamic var uuid: String?
     dynamic var name: String?
     dynamic var deviceId: Int32 = 0
+    dynamic var userId: String?
     
     var linkState = LinkState.unlink {
         didSet {
