@@ -106,6 +106,20 @@ class ServerApi: NSObject {
         }
     }
     
+    class func updateDevicePassword(deviceId: String, old: String, new: String, complet: @escaping ((ServerResult) -> ())) {
+        let param: [String : Any] = ["version": "1.0.0"
+            , "userId": ServerApi.userId!
+            , "token": ServerApi.token!
+            , "deviceId": "0"
+            , "oldPassword": old
+            , "newPassword": new]
+        ServerApi.request(url: "http://gaoyi.gooorun.com:8282/uis/smartHome/updateDevicePassword", parameters: param) { (result) in
+            let model = ServerResult()
+            model.modelSet(withJSON: result ?? "")
+            complet(model)
+        }
+    }
+    
     class func request(url: String, parameters: [String: Any]? = nil, complet: @escaping ((String?) -> ())) {
         let url = URL(string: url)
         Alamofire.request(url!, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseString { (respon) in
